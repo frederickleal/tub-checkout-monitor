@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Checkout Monitor</title>
+<meta name="description" content="Live health of every TUB Whop checkout — is the payment form actually rendering?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F5F7F2;
+    --surface: #FFFFFF;
+    --ink: #17352B;
+    --ink-2: #3E554B;
+    --muted: #6B7C73;
+    --line: #DCE3DC;
+    --line-strong: #B9C6BC;
+    --accent: #17352B;
+    --accent-soft: #E6F5A0;
+    --good: #1E7A46;      --good-bg: #E6F4EA;
+    --warn: #A8650F;      --warn-bg: #FBF0DA;
+    --crit: #B42318;      --crit-bg: #FCE8E6;
+    --none: #C9D2CB;
+    --bar: #3F7F63;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101715; --surface: #171F1C; --ink: #E7EFE9; --ink-2: #C3D0C8; --muted: #8FA097;
+      --line: #263029; --line-strong: #3A4841; --accent: #CFE68A; --accent-soft: #2B3A1F;
+      --good: #4FBF7A; --good-bg: #16302A; --warn: #E0A54A; --warn-bg: #33291A; --crit: #F0705F; --crit-bg: #3A1F1C;
+      --none: #3A4841; --bar: #5FA987;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101715; --surface: #171F1C; --ink: #E7EFE9; --ink-2: #C3D0C8; --muted: #8FA097;
+    --line: #263029; --line-strong: #3A4841; --accent: #CFE68A; --accent-soft: #2B3A1F;
+    --good: #4FBF7A; --good-bg: #16302A; --warn: #E0A54A; --warn-bg: #33291A; --crit: #F0705F; --crit-bg: #3A1F1C;
+    --none: #3A4841; --bar: #5FA987;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.5 var(--sans); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-block: 28px 56px; padding-inline: 20px; }
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 20px; }
+  h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0; }
+  .sub b { color: var(--ink-2); font-weight: 500; }
+  .verdict { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid transparent; }
+  .verdict .dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+  .verdict.ok   { color: var(--good); background: var(--good-bg); }
+  .verdict.warn { color: var(--warn); background: var(--warn-bg); }
+  .verdict.crit { color: var(--crit); background: var(--crit-bg); }
+  .verdict.crit .dot { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .verdict.crit .dot { animation: none; } }
+
+  .banner { margin: 0 0 18px; padding: 10px 14px; border: 1px dashed var(--line-strong); border-radius: 8px; color: var(--ink-2); font-size: 13.5px; background: var(--surface); }
+  .banner code { font-family: var(--mono); font-size: 12.5px; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .kpi .lbl { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .kpi .val { font: 500 26px/1.1 var(--mono); font-variant-numeric: tabular-nums; margin-top: 4px; }
+  .kpi .val small { font: 400 13px/1 var(--sans); color: var(--muted); margin-left: 4px; }
+  .kpi.good .val { color: var(--good); } .kpi.warn .val { color: var(--warn); } .kpi.crit .val { color: var(--crit); }
+
+  .group { margin-top: 26px; }
+  .group h2 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 10px; }
+  .group h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; min-width: 1040px; }
+  th, td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: middle; }
+  tr:first-child td { border-top: 0; }
+  th { border-top: 0; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding-block: 9px; }
+  td.name { font-weight: 500; min-width: 230px; }
+  td.name a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  td.name a:hover, td.name a:focus-visible { border-bottom-color: var(--ink); outline: none; }
+  td.name .path { display: block; font: 12px/1.3 var(--mono); color: var(--muted); margin-top: 2px; border: 0; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 7px; border-radius: 999px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+  .chip svg { width: 12px; height: 12px; }
+  .chip.PASS { color: var(--good); background: var(--good-bg); }
+  .chip.WARN { color: var(--warn); background: var(--warn-bg); }
+  .chip.FAIL { color: var(--crit); background: var(--crit-bg); }
+  td.detail { color: var(--ink-2); font-size: 13.5px; min-width: 240px; max-width: 360px; }
+  td.detail .why { display: block; font: 12px/1.4 var(--mono); color: var(--muted); margin-top: 2px; }
+  .bar { display: flex; align-items: center; gap: 8px; min-width: 150px; }
+  .bar .track { flex: 1; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar .fill { height: 100%; background: var(--bar); border-radius: 3px; }
+  .bar .fill.slow { background: var(--warn); }
+  .bar .num { font: 500 13px/1 var(--mono); font-variant-numeric: tabular-nums; min-width: 44px; text-align: right; }
+  td.js { font: 13px/1.3 var(--mono); color: var(--ink-2); white-space: nowrap; }
+  td.js .bad { color: var(--crit); font-weight: 500; }
+  .strip { display: flex; gap: 2px; align-items: flex-end; height: 22px; }
+  .strip i { display: block; width: 5px; height: 22px; border-radius: 2px; background: var(--none); }
+  .strip i.PASS { background: var(--good); } .strip i.WARN { background: var(--warn); } .strip i.FAIL { background: var(--crit); }
+  .strip i:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .stripcap { font-size: 11px; color: var(--muted); margin-top: 3px; white-space: nowrap; }
+
+  .explain { margin-top: 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .explain > div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 13.5px; color: var(--ink-2); }
+  .explain h3 { margin: 0 0 6px; font-size: 13px; color: var(--ink); font-weight: 600; }
+  .explain p { margin: 0 0 6px; }
+  .explain ul { margin: 0; padding-left: 18px; }
+  .explain li { margin: 2px 0; }
+  .explain code { font-family: var(--mono); font-size: 12.5px; background: var(--ground); padding: 1px 5px; border-radius: 4px; }
+  footer { margin-top: 24px; font-size: 12.5px; color: var(--muted); }
+  #tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--ground); font: 12px/1.35 var(--mono); padding: 6px 8px; border-radius: 6px; z-index: 9; max-width: 260px; }
+  @media (max-width: 560px) { .wrap { padding-inline: 16px; } h1 { font-size: 19px; } .kpi .val { font-size: 22px; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Checkout Monitor</h1>
+      <p class="sub" id="meta">Loading…</p>
+    </div>
+    <div class="verdict ok" id="verdict"><span class="dot"></span><span id="verdict-text">Checking…</span></div>
+  </header>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <div class="kpis" id="kpis"></div>
+  <div id="groups"></div>
+
+  <section class="explain">
+    <div>
+      <h3>What one check does</h3>
+      <p>A real headless Chrome opens the page, waits for our checkout to render, loads Whop's <code>elements.js</code>, and then watches the Whop payment iframe. It starts at <code>0px</code> tall and only grows (to ~574px) once the card fields have actually drawn. A page passes only when that happens, the error box stays hidden, and <em>Complete Order</em> is visible.</p>
+      <p>Two-step A2A checkouts get filled in with a test identity and clicked through to step 2 first, with the contact API blocked so no abandoned cart or CRM record is created.</p>
+    </div>
+    <div>
+      <h3>How to read a status</h3>
+      <ul>
+        <li><b>Healthy</b>: payment fields rendered in under 10s.</li>
+        <li><b>Slow</b>: rendered, but took over 10s. Buyers on weak connections may give up.</li>
+        <li><b>Down</b>: confirmed on two attempts 20s apart. The reason column says why (Cloudflare challenge, script blocked, iframe never rendered, error shown to buyer, page 4xx/5xx).</li>
+      </ul>
+      <p>Bars in the history strip are one check each, newest on the right.</p>
+    </div>
+    <div>
+      <h3>What it can't see</h3>
+      <p>Checks run from a cloud runner. Yesterday's failure also hit home and office networks specifically, so a green board here plus customer reports means: <b>believe the customers</b>. The daily 9am ET Slack summary proves the monitor itself is alive; if it stops arriving, the monitor is broken, not the checkout.</p>
+      <p>Pages are listed in <code>pages.json</code>. Add or pause one there.</p>
+    </div>
+  </section>
+  <footer id="foot"></footer>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+(function () {
+  // ------------------------------------------------------------ sample data (shown only when status.json isn't next to this page)
+  const SAMPLE = {"updatedAt":"2026-09-17T20:30:07Z","vantage":"GitHub Actions (cloud runner, US)","intervalMinutes":30,"summary":{"total":16,"pass":14,"warn":1,"fail":1},"results":[
+    {"id":"aieb-general","label":"Bootcamp · General Admission","funnel":"AIEB organic","url":"https://go.theuncommonbusiness.co/general-admission-2026","status":"PASS","detail":"Payment fields rendered in 3.1s","timings":{"mount":3100},"elementsJs":{"status":200,"ms":900}},
+    {"id":"aieb-vip","label":"Bootcamp · VIP","funnel":"AIEB organic","url":"https://go.theuncommonbusiness.co/vip-admission-2026","status":"PASS","detail":"Payment fields rendered in 2.8s","timings":{"mount":2800},"elementsJs":{"status":200,"ms":760}},
+    {"id":"aieb-platinum","label":"Bootcamp · Platinum","funnel":"AIEB organic","url":"https://go.theuncommonbusiness.co/platinum-admission-2026","status":"PASS","detail":"Payment fields rendered in 3.4s","timings":{"mount":3400},"elementsJs":{"status":200,"ms":880}},
+    {"id":"aieb-ads-general","label":"Bootcamp · General (Ads)","funnel":"AIEB ads","url":"https://go.theuncommonbusiness.co/ads-general-admission-2026","status":"PASS","detail":"Payment fields rendered in 2.9s","timings":{"mount":2900},"elementsJs":{"status":200,"ms":810}},
+    {"id":"aieb-ads-vip","label":"Bootcamp · VIP (Ads)","funnel":"AIEB ads","url":"https://go.theuncommonbusiness.co/ads-vip-admission-2026","status":"FAIL","reason":"cloudflare_challenge","detail":"Cloudflare challenged the request for elements.js (cf-mitigated: challenge) — a script tag cannot answer a challenge, checkout renders blank","timings":{},"elementsJs":{"status":403,"ms":640,"cfMitigated":"challenge"},"failingSince":"2026-09-17T19:30:11Z"},
+    {"id":"aieb-ads-platinum","label":"Bootcamp · Platinum (Ads)","funnel":"AIEB ads","url":"https://go.theuncommonbusiness.co/ads-platinum-admission-2026","status":"PASS","detail":"Payment fields rendered in 3.0s","timings":{"mount":3000},"elementsJs":{"status":200,"ms":790}},
+    {"id":"aieb-up-vip","label":"Bootcamp · VIP Upgrade","funnel":"AIEB upgrades","url":"https://go.theuncommonbusiness.co/vip-admission-upgrade","status":"PASS","detail":"Payment fields rendered in 2.6s","timings":{"mount":2600},"elementsJs":{"status":200,"ms":700}},
+    {"id":"aieb-up-platinum","label":"Bootcamp · Platinum Upgrade","funnel":"AIEB upgrades","url":"https://go.theuncommonbusiness.co/platinum-admission-upgrade","status":"PASS","detail":"Payment fields rendered in 2.7s","timings":{"mount":2700},"elementsJs":{"status":200,"ms":720}},
+    {"id":"aieb-up-vip-plat","label":"Bootcamp · VIP→Platinum Upgrade","funnel":"AIEB upgrades","url":"https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade","status":"PASS","detail":"Payment fields rendered in 2.9s","timings":{"mount":2900},"elementsJs":{"status":200,"ms":750}},
+    {"id":"aieb-up-ga-vip","label":"Bootcamp · GA→VIP Upgrade","funnel":"AIEB upgrades","url":"https://go.theuncommonbusiness.co/ga-vip-admission-upgrade","status":"PASS","detail":"Payment fields rendered in 3.2s","timings":{"mount":3200},"elementsJs":{"status":200,"ms":830}},
+    {"id":"aieb-up-ga-platinum","label":"Bootcamp · GA→Platinum Upgrade","funnel":"AIEB upgrades","url":"https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade","status":"WARN","detail":"Payment fields rendered but took 11.4s (slow)","timings":{"mount":11400},"elementsJs":{"status":200,"ms":6900}},
+    {"id":"a2a-founder","label":"A2A Fall · Founder (PIF / 3-Pay / 5-Pay)","funnel":"A2A Fall 26","url":"https://go.theuncommonbusiness.co/a2a-fall-2026-checkout","status":"PASS","detail":"Payment fields rendered in 4.6s","timings":{"mount":4600},"elementsJs":{"status":200,"ms":820}},
+    {"id":"a2a-team-seat","label":"A2A Fall · Team Seats","funnel":"A2A Fall 26","url":"https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724","status":"PASS","detail":"Payment fields rendered in 4.9s","timings":{"mount":4900},"elementsJs":{"status":200,"ms":860}},
+    {"id":"a2a-alumni","label":"A2A Fall · Alumni","funnel":"A2A Fall 26","url":"https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156","status":"PASS","detail":"Payment fields rendered in 4.4s","timings":{"mount":4400},"elementsJs":{"status":200,"ms":790}},
+    {"id":"a2a-10pay","label":"A2A Fall · 10-Pay","funnel":"A2A Fall 26","url":"https://go.theuncommonbusiness.co/10-pay","status":"PASS","detail":"Payment fields rendered in 4.7s","timings":{"mount":4700},"elementsJs":{"status":200,"ms":840}},
+    {"id":"a2a-clarity","label":"A2A Fall · Clarity Pay","funnel":"A2A Fall 26","url":"https://go.theuncommonbusiness.co/clarity-pay","status":"PASS","detail":"ClarityPay Apply button rendered","timings":{"mount":2100},"elementsJs":null}
+  ]};
+  function sampleHistory(status) {
+    const out = []; const n = 48; const t0 = Date.parse(status.updatedAt) - (n - 1) * 30 * 60000;
+    for (let i = 0; i < n; i++) out.push({ t: new Date(t0 + i * 30 * 60000).toISOString(), r: status.results.map((r) => {
+      let s = "PASS"; const m = Math.round((r.timings.mount || 2000) * (0.85 + Math.random() * 0.3));
+      if (r.id === "aieb-ads-vip" && i >= n - 3) s = "FAIL";
+      if (r.id === "aieb-ads-vip" && i >= 20 && i <= 27) s = "FAIL";            // yesterday's outage shape
+      if (r.id === "aieb-up-ga-platinum" && i === n - 1) s = "WARN";
+      return { id: r.id, s, m: s === "FAIL" ? null : m, e: s === "FAIL" ? 403 : 200 };
+    }) });
+    return out;
+  }
+
+  // ------------------------------------------------------------ helpers
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const fmtT = (iso) => new Date(iso).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" });
+  const ago = (iso) => { const m = Math.round((Date.now() - Date.parse(iso)) / 60000); return m < 1 ? "just now" : m < 60 ? `${m} min ago` : `${Math.round(m / 60)} h ago`; };
+  const ICON = {
+    PASS: '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6.5l2.5 2.5L10 3.5"/></svg>',
+    WARN: '<svg viewBox="0 0 12 12" fill="currentColor"><path d="M6 1l5.5 10H.5z" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="5.3" y="4.5" width="1.4" height="3" rx=".5"/><rect x="5.3" y="8.3" width="1.4" height="1.4" rx=".5"/></svg>',
+    FAIL: '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l6 6M9 3l-6 6"/></svg>',
+  };
+  const WORD = { PASS: "Healthy", WARN: "Slow", FAIL: "Down" };
+
+  // ------------------------------------------------------------ render
+  function render(status, history, isSample) {
+    const s = status.summary;
+    const v = $("#verdict");
+    v.className = "verdict " + (s.fail ? "crit" : s.warn ? "warn" : "ok");
+    $("#verdict-text").textContent = s.fail ? `${s.fail} checkout${s.fail > 1 ? "s" : ""} down` : s.warn ? `All up · ${s.warn} slow` : `All ${s.total} checkouts healthy`;
+    $("#meta").innerHTML = `Last check <b>${esc(fmtT(status.updatedAt))}</b> (${esc(ago(status.updatedAt))}) · every ${status.intervalMinutes} min · from ${esc(status.vantage)}` + (status.runUrl ? ` · <a href="${esc(status.runUrl)}" style="color:inherit">run log</a>` : "");
+    const stale = (Date.now() - Date.parse(status.updatedAt)) > (status.intervalMinutes * 2.5) * 60000;
+    const b = $("#banner");
+    if (isSample) { b.hidden = false; b.innerHTML = "<b>Preview with sample data.</b> This is what the page looks like once the monitor is running. Live results appear here automatically when <code>status.json</code> is published next to this page by the GitHub Action."; }
+    else if (stale) { b.hidden = false; b.innerHTML = `<b>No check for ${esc(ago(status.updatedAt))}.</b> The monitor may have stopped running — check the GitHub Actions tab. Statuses below may be out of date.`; }
+
+    const day = history.filter((h) => Date.parse(h.t) > Date.now() - 86400000);
+    const dayChecks = day.reduce((n, h) => n + h.r.length, 0);
+    const dayFails = day.reduce((n, h) => n + h.r.filter((x) => x.s === "FAIL").length, 0);
+    const mounts = status.results.filter((r) => r.timings && r.timings.mount).map((r) => r.timings.mount);
+    const avg = mounts.length ? mounts.reduce((a, b) => a + b, 0) / mounts.length : 0;
+    $("#kpis").innerHTML = [
+      ["Healthy", s.pass, "good"], ["Slow", s.warn, s.warn ? "warn" : ""], ["Down", s.fail, s.fail ? "crit" : ""],
+      ["Avg render", `${(avg / 1000).toFixed(1)}<small>s</small>`, ""], ["24h checks", `${dayChecks}<small>${dayFails ? ` · ${dayFails} failed` : ""}</small>`, ""],
+    ].map(([l, v, c]) => `<div class="kpi ${c}"><div class="lbl">${l}</div><div class="val">${v}</div></div>`).join("");
+
+    const byFunnel = {};
+    status.results.forEach((r) => (byFunnel[r.funnel] ||= []).push(r));
+    const recent = history.slice(-48);
+    $("#groups").innerHTML = Object.entries(byFunnel).map(([funnel, rows]) => `
+      <section class="group"><h2>${esc(funnel)}</h2><div class="tablewrap"><table>
+        <thead><tr><th>Checkout</th><th>Status</th><th>Result</th><th>Payment render</th><th>elements.js</th><th>Last ${recent.length} checks</th></tr></thead>
+        <tbody>${rows.map((r) => row(r, recent)).join("")}</tbody></table></div></section>`).join("");
+
+    $("#foot").textContent = `Pages checked: ${s.total}. History kept 7 days. Times are your local time zone.`;
+  }
+
+  function row(r, recent) {
+    const mount = r.timings && r.timings.mount;
+    const pct = mount ? Math.min(100, mount / 15000 * 100) : 0;
+    const strip = recent.map((h) => { const x = h.r.find((y) => y.id === r.id); return `<i class="${x ? x.s : ""}" data-tip="${esc(fmtT(h.t))} · ${x ? WORD[x.s] : "not checked"}${x && x.m ? ` · ${(x.m / 1000).toFixed(1)}s` : ""}${x && x.why ? ` · ${esc(x.why)}` : ""}"></i>`; }).join("");
+    const js = r.elementsJs ? `<span class="${r.elementsJs.status && r.elementsJs.status < 400 ? "" : "bad"}">${r.elementsJs.status ? `HTTP ${r.elementsJs.status}` : "failed"}</span>${r.elementsJs.cfMitigated ? `<br><span class="bad">cf-mitigated: ${esc(r.elementsJs.cfMitigated)}</span>` : r.elementsJs.ms ? `<br><span style="color:var(--muted)">${r.elementsJs.ms} ms</span>` : ""}` : `<span style="color:var(--muted)">n/a</span>`;
+    return `<tr>
+      <td class="name"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.label)}</a><span class="path">${esc(r.url.replace(/^https?:\/\/go\.theuncommonbusiness\.co/, ""))}</span></td>
+      <td><span class="chip ${r.status}">${ICON[r.status]}${WORD[r.status]}</span></td>
+      <td class="detail">${esc(r.detail)}${r.status === "FAIL" && r.failingSince ? `<span class="why">since ${esc(fmtT(r.failingSince))}${r.reason ? ` · ${esc(r.reason)}` : ""}</span>` : ""}</td>
+      <td><div class="bar"><div class="track"><div class="fill ${mount > 10000 ? "slow" : ""}" style="width:${pct}%"></div></div><span class="num">${mount ? (mount / 1000).toFixed(1) + "s" : "—"}</span></div></td>
+      <td class="js">${js}</td>
+      <td><div class="strip">${strip}</div></td>
+    </tr>`;
+  }
+
+  // tooltip for history cells
+  const tip = $("#tip");
+  document.addEventListener("mousemove", (e) => {
+    const t = e.target.closest && e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.dataset.tip; tip.hidden = false;
+    const x = Math.min(e.clientX + 12, window.innerWidth - tip.offsetWidth - 8);
+    tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px";
+  });
+
+  // ------------------------------------------------------------ load
+  (async () => {
+    try {
+      const [s, h] = await Promise.all([fetch("./status.json", { cache: "no-store" }), fetch("./history.json", { cache: "no-store" })]);
+      if (!s.ok) throw new Error("no status.json");
+      const status = await s.json(); const history = h.ok ? await h.json() : [];
+      render(status, history, false);
+      setTimeout(() => location.reload(), 5 * 60000);   // keep an open tab current
+    } catch {
+      render(SAMPLE, sampleHistory(SAMPLE), true);
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>
