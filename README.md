@@ -1,5 +1,8 @@
 # TUB Checkout Monitor
 
+**Live status page:** https://frederickleal.github.io/tub-checkout-monitor/  
+**Runs:** https://github.com/frederickleal/tub-checkout-monitor/actions · every 30 min · alerts DM Frederick on Slack (app: *Checkout Monitor*)
+
 Every 30 minutes, a real headless Chrome opens **every live Whop checkout** and only calls it healthy when
 **Whop's payment fields have actually rendered** — the thing a buyer has to see before they can pay.
 
@@ -48,16 +51,16 @@ Convert, WiserNotify, ManyChat, FirstPromoter, Cloudflare Insights, and the `con
   elements.js response and a 48-check history strip per page.
 - **GitHub Actions tab** — every run writes a job summary table; failure screenshots are attached as an artifact.
 
-## Setup (10 minutes)
+## Setup (already done for this repo — kept for re-creating it elsewhere)
 
 ```bash
 # 1. Create the repo in the The-Uncommon-Business org and push this folder
 git init && git add -A && git commit -m "checkout monitor" && git branch -M main
-git remote add origin git@github.com:The-Uncommon-Business/mktg-checkout-monitor.git && git push -u origin main
+git remote add origin https://github.com/frederickleal/tub-checkout-monitor.git && git push -u origin main
 ```
 
 2. **Slack**: create an Incoming Webhook (Slack → Apps → Incoming Webhooks) for the channel you want alerts in
-   (#war-room, or a new #checkout-monitor). Repo → Settings → Secrets → Actions → `SLACK_WEBHOOK_URL`.
+   (currently: Frederick's DM. To move alerts to a channel, reinstall the Slack app to that channel and replace the secret.). Repo → Settings → Secrets → Actions → `SLACK_WEBHOOK_URL`.
 3. **Pages**: Settings → Pages → Deploy from branch → `monitor-state` / `(root)`. The branch appears after the
    first run. Copy the Pages URL into Settings → Variables → Actions → `STATUS_PAGE_URL`.
 4. Actions tab → *Checkout monitor* → **Run workflow** once to seed the state and confirm the Slack hook.
