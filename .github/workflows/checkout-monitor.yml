@@ -1,0 +1,103 @@
+name: Checkout monitor
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub may delay scheduled runs a few minutes under load.
+    # To change cadence, edit this line only (e.g. "*/15 * * * *" for launch days).
+    - cron: "*/30 * * * *"
+    # Daily heartbeat / summary at 9:00am ET (13:00 UTC). Proves the monitor is alive.
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      summary:
+        description: "Also post the daily summary to Slack"
+        type: boolean
+        default: false
+      only:
+        description: "Comma-separated page ids to check (blank = all)"
+        type: string
+        default: ""
+
+# Never let two runs overlap or race on the state branch.
+concurrency:
+  group: checkout-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      STATUS_PAGE_URL: ${{ vars.STATUS_PAGE_URL }}
+      MONITOR_EMAIL: ${{ vars.MONITOR_EMAIL }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      INTERVAL_MINUTES: "30"
+      VANTAGE: "GitHub Actions (cloud runner, US)"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      # State (last status, 7-day history, screenshots) lives on the monitor-state branch
+      # so every run can compare against the previous one and GitHub Pages can serve it.
+      - name: Restore previous state
+        run: |
+          git fetch origin monitor-state:monitor-state 2>/dev/null || true
+          mkdir -p state
+          if git rev-parse --verify monitor-state >/dev/null 2>&1; then
+            git show monitor-state:status.json  > state/status.json  2>/dev/null || true
+            git show monitor-state:history.json > state/history.json 2>/dev/null || true
+          fi
+
+      - name: Run monitor
+        id: monitor
+        continue-on-error: true
+        run: |
+          ARGS=""
+          if [ "${{ github.event.schedule }}" = "0 13 * * *" ] || [ "${{ inputs.summary }}" = "true" ]; then ARGS="$ARGS --summary"; fi
+          if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          node monitor.js --state state $ARGS
+
+      - name: Upload screenshots of failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots
+          path: state/screenshots/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Publish state + status page
+        if: always()
+        run: |
+          set -e
+          git config user.name  "checkout-monitor[bot]"
+          git config user.email "checkout-monitor@users.noreply.github.com"
+          rm -rf /tmp/pub && mkdir -p /tmp/pub
+          cp state/status.json state/history.json /tmp/pub/ 2>/dev/null || true
+          cp docs/index.html /tmp/pub/index.html
+          [ -d state/screenshots ] && cp -r state/screenshots /tmp/pub/ || true
+          touch /tmp/pub/.nojekyll
+          git worktree add -B monitor-state /tmp/wt origin/monitor-state 2>/dev/null || git worktree add --orphan -b monitor-state /tmp/wt
+          cd /tmp/wt
+          git rm -rq . 2>/dev/null || true
+          cp -r /tmp/pub/. .
+          git add -A
+          git commit -qm "monitor: $(date -u +%Y-%m-%dT%H:%MZ)" || echo "nothing to commit"
+          git push -q origin monitor-state
+
+      - name: Fail the run if any checkout is down
+        if: steps.monitor.outcome == 'failure'
+        run: |
+          echo "::error::One or more checkouts failed — see job summary and Slack."
+          exit 1

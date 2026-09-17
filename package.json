@@ -1,0 +1,14 @@
+{
+  "name": "tub-checkout-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Opens every live TUB Whop checkout in headless Chrome and alerts Slack when the payment fields do not render.",
+  "main": "monitor.js",
+  "scripts": {
+    "start": "node monitor.js",
+    "test": "node test/run-tests.js",
+    "build:page": "node docs/build.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "playwright": "1.56.0" }
+}

@@ -1,0 +1,24 @@
+{
+  "_comment": "Every live Whop checkout. type: aieb = one-step bootcamp checkout (payment mounts on load); a2a = two-step (fill info, Continue, payment mounts); a2a-clarity = two-step, step 2 is a ClarityPay Apply button, no Whop payment element. Set enabled:false to pause a page without deleting it.",
+  "pages": [
+    { "id": "aieb-general",        "label": "Bootcamp · General Admission",      "funnel": "AIEB organic", "type": "aieb", "url": "https://go.theuncommonbusiness.co/general-admission-2026",  "enabled": true },
+    { "id": "aieb-vip",            "label": "Bootcamp · VIP",                    "funnel": "AIEB organic", "type": "aieb", "url": "https://go.theuncommonbusiness.co/vip-admission-2026",      "enabled": true },
+    { "id": "aieb-platinum",       "label": "Bootcamp · Platinum",               "funnel": "AIEB organic", "type": "aieb", "url": "https://go.theuncommonbusiness.co/platinum-admission-2026", "enabled": true },
+
+    { "id": "aieb-ads-general",    "label": "Bootcamp · General (Ads)",          "funnel": "AIEB ads",     "type": "aieb", "url": "https://go.theuncommonbusiness.co/ads-general-admission-2026",  "enabled": true },
+    { "id": "aieb-ads-vip",        "label": "Bootcamp · VIP (Ads)",              "funnel": "AIEB ads",     "type": "aieb", "url": "https://go.theuncommonbusiness.co/ads-vip-admission-2026",      "enabled": true },
+    { "id": "aieb-ads-platinum",   "label": "Bootcamp · Platinum (Ads)",         "funnel": "AIEB ads",     "type": "aieb", "url": "https://go.theuncommonbusiness.co/ads-platinum-admission-2026", "enabled": true },
+
+    { "id": "aieb-up-vip",         "label": "Bootcamp · VIP Upgrade",            "funnel": "AIEB upgrades", "type": "aieb", "url": "https://go.theuncommonbusiness.co/vip-admission-upgrade",          "enabled": true },
+    { "id": "aieb-up-platinum",    "label": "Bootcamp · Platinum Upgrade",       "funnel": "AIEB upgrades", "type": "aieb", "url": "https://go.theuncommonbusiness.co/platinum-admission-upgrade",     "enabled": true },
+    { "id": "aieb-up-vip-plat",    "label": "Bootcamp · VIP→Platinum Upgrade",   "funnel": "AIEB upgrades", "type": "aieb", "url": "https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade", "enabled": true },
+    { "id": "aieb-up-ga-vip",      "label": "Bootcamp · GA→VIP Upgrade",         "funnel": "AIEB upgrades", "type": "aieb", "url": "https://go.theuncommonbusiness.co/ga-vip-admission-upgrade",      "enabled": true },
+    { "id": "aieb-up-ga-platinum", "label": "Bootcamp · GA→Platinum Upgrade",    "funnel": "AIEB upgrades", "type": "aieb", "url": "https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade", "enabled": true },
+
+    { "id": "a2a-founder",         "label": "A2A Fall · Founder (PIF / 3-Pay / 5-Pay)", "funnel": "A2A Fall 26", "type": "a2a",         "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",               "enabled": true },
+    { "id": "a2a-team-seat",       "label": "A2A Fall · Team Seats",             "funnel": "A2A Fall 26", "type": "a2a",         "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",        "enabled": true, "seats": 1 },
+    { "id": "a2a-alumni",          "label": "A2A Fall · Alumni",                 "funnel": "A2A Fall 26", "type": "a2a",         "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156", "enabled": true },
+    { "id": "a2a-10pay",           "label": "A2A Fall · 10-Pay",                 "funnel": "A2A Fall 26", "type": "a2a",         "url": "https://go.theuncommonbusiness.co/10-pay",                              "enabled": true },
+    { "id": "a2a-clarity",         "label": "A2A Fall · Clarity Pay",            "funnel": "A2A Fall 26", "type": "a2a-clarity", "url": "https://go.theuncommonbusiness.co/clarity-pay",                         "enabled": true }
+  ]
+}
