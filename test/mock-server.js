@@ -12,7 +12,7 @@ const elementsJs = `
     var c = document.querySelector(containerSel);
     var wrap = document.createElement('div'); wrap.style.position='relative';
     var f = document.createElement('iframe');
-    f.src = 'http://js.whop.cloud:PORT/frame/elements/amber/payments/payment/en/index-D9B24790.html#host=x';
+    f.src = 'http://cdn.whop.com:PORT/frame/elements/amber/payments/payment/en/index-D9B24790.html#host=x';
     // Real path is js.whop.cloud/...; monitor matches on "js.whop.cloud" AND "payments/payment" — mock sets both via srcdoc-less trick below
     f.setAttribute('data-src-real','https://js.whop.cloud/elements/amber/payments/payment/en/index.html');
     f.style.cssText='border:0;width:100%;height:0px;display:block';
@@ -24,7 +24,7 @@ const elementsJs = `
 
 function page(kind, mode) {
   const p = kind === "aieb" ? "aieb" : "a2a";
-  const scriptSrc = mode === "noembed" ? "" : `http://js.whop.cloud:PORT/elements/amber/elements.js?mode=${mode}`;
+  const scriptSrc = mode === "noembed" ? "" : `http://cdn.whop.com:PORT/elements/amber/elements.js?mode=${mode}`;
   const twoStep = kind !== "aieb";
   return `<!doctype html><html><head><title>Mock ${kind}</title>
 <script src="http://www.facebook.com:PORT/tr?id=1"></script>

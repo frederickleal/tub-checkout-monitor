@@ -1,8 +1,5 @@
 # TUB Checkout Monitor
 
-**Live status page:** https://frederickleal.github.io/tub-checkout-monitor/  
-**Runs:** https://github.com/frederickleal/tub-checkout-monitor/actions · every 30 min · alerts DM Frederick on Slack (app: *Checkout Monitor*)
-
 Every 30 minutes, a real headless Chrome opens **every live Whop checkout** and only calls it healthy when
 **Whop's payment fields have actually rendered** — the thing a buyer has to see before they can pay.
 
@@ -16,7 +13,8 @@ for anyone on certain home/office networks. A "does the page load" check would h
 3. **A2A (two-step) pages only:** fills step 1 with `Checkout Monitor <checkout-monitor@theuncommonbusiness.co>`
    and clicks *Continue to Payment*. The `POST /api/a2a/contact` call is **blocked**, so no GHL contact and no
    abandoned-cart ping is ever created by the monitor.
-4. Watches the request for `https://js.whop.cloud/elements/amber/elements.js` (status, `cf-mitigated`, timing).
+4. Watches the request for Whop's `elements/amber/elements.js` on **any** Whop-owned host (status, `cf-mitigated`, timing).
+   Whop moved it from `js.whop.cloud` to `cdn.whop.com` on 19 Sep 2026 without notice; the monitor no longer cares which host it is.
 5. Waits up to 30s for the Whop payment iframe inside `#…-payment-element` to grow to **≥ 100px**. It is 0px until
    the card fields draw and ~574px after. This is the pass/fail signal.
 6. Confirms the `.…-error` box is hidden and *Complete Order* is visible.
@@ -35,6 +33,14 @@ Result per page: `PASS` (rendered < 10s) · `WARN` (rendered, but > 10s) · `FAI
 | `checkout_error_shown` | Our error box is visible to the buyer (text included in the alert). |
 | `step1_blocked` / `step2_missing` | A2A step 1 → 2 flow broken (quote/validation). |
 | `embed_missing` / `page_http_error` | Our worker didn't render, or the page itself is 4xx/5xx. |
+| `monitor_pattern_stale` | Whop's script ran and a Whop iframe exists, but its URL didn't match what the monitor expects. **Checkout is probably fine** — Whop moved hosts again; update `WHOP_SCRIPT_RE` in `monitor.js`. |
+
+### 19 Sep 2026 false alarm (why the rule above exists)
+At 02:05 ART Whop switched the script host from `js.whop.cloud` to `cdn.whop.com`. The monitor matched the old
+hostname literally, so from 02:11 it reported every page as `elements_js_not_requested` while real buyers checked
+out normally. Fixed by matching any `*.whop.*` host and adding `monitor_pattern_stale`, which says "probably the
+monitor, not the checkout" when Whop's code is clearly running. When many pages fail at once with one identical
+reason, the Slack alert now also carries a "check the monitor first" note.
 
 Blocked in the monitor browser so runs leave **no trace in analytics or the CRM**: Meta pixel, GA/GTM,
 Convert, WiserNotify, ManyChat, FirstPromoter, Cloudflare Insights, and the `contact` / `pay` / `claritypay` API routes.
@@ -51,16 +57,16 @@ Convert, WiserNotify, ManyChat, FirstPromoter, Cloudflare Insights, and the `con
   elements.js response and a 48-check history strip per page.
 - **GitHub Actions tab** — every run writes a job summary table; failure screenshots are attached as an artifact.
 
-## Setup (already done for this repo — kept for re-creating it elsewhere)
+## Setup (10 minutes)
 
 ```bash
 # 1. Create the repo in the The-Uncommon-Business org and push this folder
 git init && git add -A && git commit -m "checkout monitor" && git branch -M main
-git remote add origin https://github.com/frederickleal/tub-checkout-monitor.git && git push -u origin main
+git remote add origin git@github.com:The-Uncommon-Business/mktg-checkout-monitor.git && git push -u origin main
 ```
 
 2. **Slack**: create an Incoming Webhook (Slack → Apps → Incoming Webhooks) for the channel you want alerts in
-   (currently: Frederick's DM. To move alerts to a channel, reinstall the Slack app to that channel and replace the secret.). Repo → Settings → Secrets → Actions → `SLACK_WEBHOOK_URL`.
+   (#war-room, or a new #checkout-monitor). Repo → Settings → Secrets → Actions → `SLACK_WEBHOOK_URL`.
 3. **Pages**: Settings → Pages → Deploy from branch → `monitor-state` / `(root)`. The branch appears after the
    first run. Copy the Pages URL into Settings → Variables → Actions → `STATUS_PAGE_URL`.
 4. Actions tab → *Checkout monitor* → **Run workflow** once to seed the state and confirm the Slack hook.

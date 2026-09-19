@@ -9,7 +9,7 @@ const PORT = 8787;
 const BASE = `http://127.0.0.1:${PORT}`;
 const ROOT = path.join(__dirname, "..");
 const STATE = path.join(__dirname, ".state");
-const RESOLVER = `--host-resolver-rules=MAP js.whop.cloud 127.0.0.1,MAP www.facebook.com 127.0.0.1`;
+const RESOLVER = `--host-resolver-rules=MAP cdn.whop.com 127.0.0.1,MAP www.facebook.com 127.0.0.1`;
 
 const cases = [
   // name,               url,                        expected status, expected reason

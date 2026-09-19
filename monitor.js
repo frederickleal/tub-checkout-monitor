@@ -66,6 +66,12 @@ const BLOCKED_HOSTS = [
 // Never create a contact, an abandoned cart, or a payment from the monitor.
 const BLOCKED_PATHS = [/\/api\/a2a\/contact/, /\/api\/[^/]*\/?contact/, /\/api\/a2a\/pay\b/, /\/api\/pay\b/, /\/api\/a2a\/claritypay/];
 
+// Whop has moved its script host before (js.whop.cloud -> cdn.whop.com on 19 Sep 2026). Match any
+// whop-owned host so a CDN move never reads as an outage again.
+const WHOP_SCRIPT_RE = /https?:\/\/[^/]*whop\.[a-z]+(:\d+)?\/elements\/[^/]+\/elements\.js/;
+const WHOP_IFRAME_SEL = 'iframe[src*="whop."][src*="payments/payment"]';
+const WHOP_ANY_IFRAME_SEL = 'iframe[src*="whop."]';
+
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36";
 
 // ---------------------------------------------------------------- helpers
@@ -100,17 +106,17 @@ async function checkPage(browser, pg) {
   const consoleErrors = [];
   page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(m.text().slice(0, 200)); });
   page.on("request", (req) => {
-    if (/js\.whop\.cloud(:\d+)?\/elements\/amber\/elements\.js/.test(req.url())) r.elementsJs = Object.assign(r.elementsJs || {}, { url: req.url(), requestedAt: ms(t0) });
+    if (WHOP_SCRIPT_RE.test(req.url())) r.elementsJs = Object.assign(r.elementsJs || {}, { url: req.url(), requestedAt: ms(t0) });
   });
   page.on("response", async (resp) => {
     const u = resp.url();
-    if (/js\.whop\.cloud(:\d+)?\/elements\/amber\/elements\.js/.test(u)) {
+    if (WHOP_SCRIPT_RE.test(u)) {
       const h = resp.headers();
       r.elementsJs = Object.assign(r.elementsJs || {}, { status: resp.status(), ms: ms(t0), cfMitigated: h["cf-mitigated"] || null, cacheControl: h["cache-control"] || null, cfCache: h["cf-cache-status"] || null });
     }
   });
   page.on("requestfailed", (req) => {
-    if (/js\.whop\.cloud(:\d+)?\/elements\/amber\/elements\.js/.test(req.url())) {
+    if (WHOP_SCRIPT_RE.test(req.url())) {
       // Keep any status/headers we already saw (Chrome reports a 403 challenge page as
       // ERR_BLOCKED_BY_ORB *after* the response arrived) and add the failure reason.
       const prev = r.elementsJs || {};
@@ -169,22 +175,24 @@ async function checkPage(browser, pg) {
     await page.locator(container).scrollIntoViewIfNeeded().catch(() => {});
     const remaining = Math.max(5000, TIMEOUT_MS - ms(t0));
     try {
-      await page.waitForFunction(({ container, minH }) => {
-        const f = document.querySelector(`${container} iframe[src*="js.whop.cloud"][src*="payments/payment"]`);
+      await page.waitForFunction(({ container, minH, sel }) => {
+        const f = document.querySelector(`${container} ${sel}`);
         return !!f && f.offsetHeight >= minH;
-      }, { container, minH: MIN_MOUNT_HEIGHT }, { timeout: remaining, polling: 250 });
+      }, { container, minH: MIN_MOUNT_HEIGHT, sel: WHOP_IFRAME_SEL }, { timeout: remaining, polling: 250 });
     } catch {
       // Work out WHY so the alert says something useful
-      const diag = await page.evaluate(({ container, prefix }) => {
+      const diag = await page.evaluate(({ container, prefix, anySel }) => {
         const err = document.querySelector(`.${prefix}-error`);
-        const f = document.querySelector(`${container} iframe[src*="js.whop.cloud"]`);
+        const f = document.querySelector(`${container} ${anySel}`);
+        const hostSeen = f ? (f.src.match(/^https?:\/\/([^/]+)/) || [])[1] : null;
         return {
           whopElements: typeof window.WhopElements,
           errorText: err && getComputedStyle(err).display !== "none" ? err.textContent.trim() : "",
           iframePresent: !!f, iframeHeight: f ? f.offsetHeight : null,
           containerHeight: document.querySelector(container)?.offsetHeight ?? null,
+          hostSeen,
         };
-      }, { container, prefix });
+      }, { container, prefix, anySel: WHOP_ANY_IFRAME_SEL });
       r.diag = diag;
       if (r.elementsJs && r.elementsJs.url && (r.elementsJs.status === undefined || r.elementsJs.status === 0 || r.elementsJs.error)) {
         // Chrome hides a blocked script response (ORB), so ask the same URL directly from this
@@ -202,6 +210,7 @@ async function checkPage(browser, pg) {
       if (r.elementsJs && r.elementsJs.status === 0) throw fail("elements_js_network_error", `elements.js failed at the network level: ${r.elementsJs.error || "unknown"}`);
       if (r.elementsJs && r.elementsJs.error) throw fail("elements_js_blocked", `elements.js returned HTTP ${r.elementsJs.status} but the browser refused to run it (${r.elementsJs.error})`);
       if (r.elementsJs && r.elementsJs.status >= 400) throw fail("elements_js_http_error", `elements.js returned HTTP ${r.elementsJs.status}`);
+      if (!r.elementsJs && diag.whopElements === "function") throw fail("monitor_pattern_stale", `Whop's script executed but the monitor did not recognise its URL${diag.hostSeen ? ` (iframe host seen: ${diag.hostSeen})` : ""} — Whop may have moved hosts again. Checkout is probably FINE; update WHOP_SCRIPT_RE in monitor.js`);
       if (!r.elementsJs) throw fail("elements_js_not_requested", "Page never requested Whop's elements.js — embed did not reach loadElements()");
       if (diag.whopElements !== "function") throw fail("elements_js_not_executed", `elements.js downloaded (HTTP ${r.elementsJs.status}) but window.WhopElements is ${diag.whopElements}`);
       if (diag.errorText) throw fail("checkout_error_shown", `Checkout showed an error to the buyer: "${diag.errorText}"`);
@@ -280,8 +289,11 @@ async function slack(text, blocks) {
   const url = process.env.SLACK_WEBHOOK_URL;
   const payload = { text, ...(blocks ? { blocks } : {}) };
   if (!url) { console.log("\n[slack: no SLACK_WEBHOOK_URL set — would have posted]\n" + text + "\n"); return; }
-  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-  if (!res.ok) console.error("Slack webhook failed:", res.status, await res.text());
+  try {
+    const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    if (!res.ok) console.error("Slack webhook FAILED:", res.status, await res.text());
+    else console.log(`[slack] posted OK (${res.status}): ${text.split("\n")[0].slice(0, 90)}`);
+  } catch (e) { console.error("Slack webhook ERROR:", e.message); }
 }
 
 function links() {
@@ -300,10 +312,12 @@ async function notify(results, prev, meta) {
   const warns = results.filter((r) => r.status === "WARN");
 
   if (newlyFailing.length) {
+    const sameReason = newlyFailing.length >= 5 && new Set(newlyFailing.map((r) => r.reason)).size === 1;
+    const sanity = sameReason ? `\n⚠️ _${newlyFailing.length} pages failed at once with the same reason (${newlyFailing[0].reason}). When everything fails simultaneously right after a healthy streak, suspect a change on Whop's or our side that the monitor doesn't recognise yet — open one checkout in a real browser before escalating._` : "";
     const lines = newlyFailing.map((r) => `• *${r.label}* — ${r.detail}\n   <${r.url}|${r.url.replace("https://", "")}>` + (r.elementsJs ? `  · elements.js HTTP ${r.elementsJs.status}${r.elementsJs.cfMitigated ? ` (cf-mitigated: ${r.elementsJs.cfMitigated})` : ""}` : ""));
     await slack(`🔴 *CHECKOUT DOWN — ${newlyFailing.length} page${newlyFailing.length > 1 ? "s" : ""} failing* (confirmed on 2 attempts, 20s apart)\n${lines.join("\n")}` +
       (stillFailing.length ? `\n_${stillFailing.length} other page(s) still failing from earlier._` : "") +
-      `\n*Checked from:* ${meta.vantage}${links()}`);
+      `\n*Checked from:* ${meta.vantage}${sanity}${links()}`);
   } else if (stillFailing.length && meta.everyNthReminder) {
     await slack(`🔴 *Still down:* ${stillFailing.map((r) => r.label).join(", ")} — failing since ${prevBy[stillFailing[0].id].failingSince || "earlier"}${links()}`);
   }
