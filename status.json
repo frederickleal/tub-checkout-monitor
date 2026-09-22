@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-09-21T23:46:23.895Z",
+  "updatedAt": "2026-09-22T00:22:20.905Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 30,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/35668535258",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/35671150720",
   "summary": {
     "total": 16,
     "pass": 1,
@@ -16,14 +16,14 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/general-admission-2026",
-      "checkedAt": "2026-09-21T23:40:32.133Z",
+      "checkedAt": "2026-09-22T00:16:28.359Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 437,
-        "embed": 630,
-        "total": 30267
+        "nav": 419,
+        "embed": 619,
+        "total": 30215
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -34,7 +34,7 @@
         "errorText": "",
         "iframePresent": false,
         "iframeHeight": null,
-        "containerHeight": 271
+        "containerHeight": 574
       },
       "consoleErrors": [
         "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
@@ -56,14 +56,14 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-2026",
-      "checkedAt": "2026-09-21T23:40:32.088Z",
+      "checkedAt": "2026-09-22T00:16:28.155Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 393,
-        "embed": 563,
-        "total": 30117
+        "nav": 394,
+        "embed": 565,
+        "total": 30115
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -96,14 +96,14 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-2026",
-      "checkedAt": "2026-09-21T23:40:32.068Z",
+      "checkedAt": "2026-09-22T00:16:28.197Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 460,
-        "embed": 650,
-        "total": 30136
+        "nav": 434,
+        "embed": 599,
+        "total": 30197
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -136,14 +136,14 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-general-admission-2026",
-      "checkedAt": "2026-09-21T23:41:52.404Z",
+      "checkedAt": "2026-09-22T00:17:48.491Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 281,
-        "embed": 395,
-        "total": 30103
+        "nav": 269,
+        "embed": 449,
+        "total": 30134
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -154,7 +154,7 @@
         "errorText": "",
         "iframePresent": false,
         "iframeHeight": null,
-        "containerHeight": 271
+        "containerHeight": 574
       },
       "consoleErrors": [
         "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
@@ -176,14 +176,14 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-vip-admission-2026",
-      "checkedAt": "2026-09-21T23:41:52.471Z",
+      "checkedAt": "2026-09-22T00:17:48.652Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 364,
-        "embed": 483,
-        "total": 30156
+        "nav": 343,
+        "embed": 709,
+        "total": 30169
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -216,14 +216,14 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-platinum-admission-2026",
-      "checkedAt": "2026-09-21T23:41:52.596Z",
+      "checkedAt": "2026-09-22T00:17:48.816Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 395,
-        "embed": 643,
-        "total": 30170
+        "nav": 473,
+        "embed": 1015,
+        "total": 30174
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -256,14 +256,14 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-upgrade",
-      "checkedAt": "2026-09-21T23:43:12.679Z",
+      "checkedAt": "2026-09-22T00:19:08.837Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 272,
-        "embed": 398,
-        "total": 30077
+        "nav": 263,
+        "embed": 405,
+        "total": 30097
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -296,14 +296,14 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-upgrade",
-      "checkedAt": "2026-09-21T23:43:12.791Z",
+      "checkedAt": "2026-09-22T00:19:09.006Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 356,
-        "embed": 507,
-        "total": 30133
+        "nav": 367,
+        "embed": 528,
+        "total": 30232
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -336,14 +336,14 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade",
-      "checkedAt": "2026-09-21T23:43:12.911Z",
+      "checkedAt": "2026-09-22T00:19:09.176Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 486,
-        "embed": 556,
-        "total": 30185
+        "nav": 480,
+        "embed": 692,
+        "total": 30217
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -376,14 +376,14 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-vip-admission-upgrade",
-      "checkedAt": "2026-09-21T23:44:32.900Z",
+      "checkedAt": "2026-09-22T00:20:29.129Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 238,
-        "embed": 293,
-        "total": 30070
+        "nav": 265,
+        "embed": 319,
+        "total": 30112
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -416,14 +416,14 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade",
-      "checkedAt": "2026-09-21T23:44:33.082Z",
+      "checkedAt": "2026-09-22T00:20:29.451Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 345,
-        "embed": 446,
-        "total": 30070
+        "nav": 534,
+        "embed": 891,
+        "total": 30095
       },
       "elementsJs": null,
       "blockedRequests": 10,
@@ -456,15 +456,15 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-09-21T23:44:33.254Z",
+      "checkedAt": "2026-09-22T00:20:29.602Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 509,
-        "embed": 719,
-        "step2": 1130,
-        "total": 30088
+        "nav": 649,
+        "embed": 1165,
+        "step2": 1843,
+        "total": 30127
       },
       "elementsJs": null,
       "blockedRequests": 9,
@@ -481,8 +481,8 @@
         "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
         "Failed to load resource: the server responded with a status of 404 ()",
         "Failed to load resource: the server responded with a status of 404 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 404 ()"
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
       ],
       "firstAttempt": {
         "status": "FAIL",
@@ -497,15 +497,15 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-09-21T23:45:53.128Z",
+      "checkedAt": "2026-09-22T00:21:49.432Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 267,
-        "embed": 393,
-        "step2": 819,
-        "total": 30070
+        "nav": 240,
+        "embed": 356,
+        "step2": 981,
+        "total": 30107
       },
       "elementsJs": null,
       "blockedRequests": 9,
@@ -538,15 +538,15 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-09-21T23:45:53.280Z",
+      "checkedAt": "2026-09-22T00:21:49.720Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 356,
-        "embed": 521,
-        "step2": 784,
-        "total": 30083
+        "nav": 344,
+        "embed": 513,
+        "step2": 1097,
+        "total": 30102
       },
       "elementsJs": null,
       "blockedRequests": 9,
@@ -579,15 +579,15 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-09-21T23:45:53.549Z",
+      "checkedAt": "2026-09-22T00:21:49.925Z",
       "status": "FAIL",
       "reason": "elements_js_not_requested",
       "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
       "timings": {
-        "nav": 366,
-        "embed": 517,
-        "step2": 895,
-        "total": 30097
+        "nav": 482,
+        "embed": 737,
+        "step2": 1588,
+        "total": 30116
       },
       "elementsJs": null,
       "blockedRequests": 9,
@@ -620,19 +620,19 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-09-21T23:46:23.230Z",
+      "checkedAt": "2026-09-22T00:22:19.591Z",
       "status": "PASS",
       "reason": null,
       "detail": "ClarityPay Apply button rendered",
       "timings": {
-        "nav": 346,
-        "embed": 519,
-        "step2": 594,
-        "mount": 634,
-        "total": 634
+        "nav": 829,
+        "embed": 1077,
+        "step2": 1270,
+        "mount": 1275,
+        "total": 1275
       },
       "elementsJs": null,
-      "blockedRequests": 2,
+      "blockedRequests": 4,
       "screenshot": null,
       "httpStatus": 200
     }
