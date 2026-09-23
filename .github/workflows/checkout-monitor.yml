@@ -5,8 +5,9 @@ on:
     # Every 30 minutes. GitHub may delay scheduled runs a few minutes under load.
     # To change cadence, edit this line only (e.g. "*/15 * * * *" for launch days).
     - cron: "*/30 * * * *"
-    # Daily heartbeat / summary at 9:00am ET (13:00 UTC). Proves the monitor is alive.
-    - cron: "0 13 * * *"
+    # No scheduled daily summary: Slack only hears from the monitor when something is wrong
+    # (down, still down, recovered, slow, or the monitor itself crashed). Run manually with
+    # summary=true if you want one.
   workflow_dispatch:
     inputs:
       summary:
@@ -64,7 +65,7 @@ jobs:
         continue-on-error: true
         run: |
           ARGS=""
-          if [ "${{ github.event.schedule }}" = "0 13 * * *" ] || [ "${{ inputs.summary }}" = "true" ]; then ARGS="$ARGS --summary"; fi
+          if [ "${{ inputs.summary }}" = "true" ]; then ARGS="$ARGS --summary"; fi
           if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
           node monitor.js --state state $ARGS
 

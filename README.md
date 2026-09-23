@@ -49,8 +49,10 @@ Convert, WiserNotify, ManyChat, FirstPromoter, Cloudflare Insights, and the `con
 
 - **Slack** — set `SLACK_WEBHOOK_URL` (repo secret). You get: 🔴 one alert when a page goes down (with reason,
   elements.js status and links), a "still down" reminder every ~4h while it stays down, ✅ one message when it
-  recovers, ⚠️ a note when a page turns slow, 🚨 a message if the *monitor itself* crashes, and a daily 9am ET
-  summary that doubles as a heartbeat (if it stops arriving, the monitor is broken, not the checkout).
+  recovers, ⚠️ a note when a page turns slow, 🚨 a message if the *monitor itself* crashes. **Nothing is sent while everything is healthy** — no daily
+  summary (removed 23 Sep 2026 at Frederick's request). To confirm the monitor is alive, glance at the status
+  page: it shows a banner if the last check is older than 2.5× the interval. A summary can still be sent on demand:
+  Actions → Run workflow → `summary: true`.
 - **Status page** — `docs/index.html`, published by the workflow to the `monitor-state` branch together with
   `status.json` / `history.json`. Enable GitHub Pages → *Deploy from branch* → `monitor-state` / root, then put
   that URL in the repo variable `STATUS_PAGE_URL` so alerts link to it. Shows current status, render time, the
