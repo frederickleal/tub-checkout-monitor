@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-09-27T08:12:00.224Z",
+  "updatedAt": "2026-09-27T08:41:29.085Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 30,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36305404869",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36306951054",
   "summary": {
     "total": 16,
     "pass": 16,
@@ -16,26 +16,26 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/general-admission-2026",
-      "checkedAt": "2026-09-27T08:11:49.077Z",
+      "checkedAt": "2026-09-27T08:41:17.855Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.6s",
+      "detail": "Payment fields rendered in 2.3s",
       "timings": {
-        "nav": 608,
-        "embed": 788,
-        "mount": 1603,
-        "total": 1619
+        "nav": 810,
+        "embed": 1024,
+        "mount": 2287,
+        "total": 2320
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 638,
+        "requestedAt": 835,
         "status": 200,
-        "ms": 915,
+        "ms": 1111,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "UPDATING"
+        "cfCache": "HIT"
       },
-      "blockedRequests": 5,
+      "blockedRequests": 4,
       "screenshot": null,
       "httpStatus": 200
     },
@@ -45,21 +45,21 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-2026",
-      "checkedAt": "2026-09-27T08:11:49.077Z",
+      "checkedAt": "2026-09-27T08:41:17.856Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.6s",
+      "detail": "Payment fields rendered in 1.8s",
       "timings": {
-        "nav": 858,
-        "embed": 947,
-        "mount": 1602,
-        "total": 1676
+        "nav": 788,
+        "embed": 1037,
+        "mount": 1840,
+        "total": 1996
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 878,
+        "requestedAt": 831,
         "status": 200,
-        "ms": 1046,
+        "ms": 1109,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -74,24 +74,24 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-2026",
-      "checkedAt": "2026-09-27T08:11:49.077Z",
+      "checkedAt": "2026-09-27T08:41:17.856Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.1s",
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 859,
-        "embed": 972,
-        "mount": 2074,
-        "total": 2417
+        "nav": 700,
+        "embed": 856,
+        "mount": 1650,
+        "total": 2215
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 916,
+        "requestedAt": 729,
         "status": 200,
-        "ms": 1128,
+        "ms": 1017,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+        "cfCache": "UPDATING"
       },
       "blockedRequests": 1,
       "screenshot": null,
@@ -103,26 +103,26 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-general-admission-2026",
-      "checkedAt": "2026-09-27T08:11:50.713Z",
+      "checkedAt": "2026-09-27T08:41:19.876Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.6s",
+      "detail": "Payment fields rendered in 1.5s",
       "timings": {
-        "nav": 618,
-        "embed": 714,
-        "mount": 1642,
-        "total": 1691
+        "nav": 816,
+        "embed": 965,
+        "mount": 1491,
+        "total": 1581
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 637,
+        "requestedAt": 850,
         "status": 200,
-        "ms": 1190,
+        "ms": 1030,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
       },
-      "blockedRequests": 5,
+      "blockedRequests": 6,
       "screenshot": null,
       "httpStatus": 200
     },
@@ -132,21 +132,21 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-vip-admission-2026",
-      "checkedAt": "2026-09-27T08:11:50.773Z",
+      "checkedAt": "2026-09-27T08:41:20.105Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.8s",
+      "detail": "Payment fields rendered in 1.9s",
       "timings": {
-        "nav": 623,
-        "embed": 707,
-        "mount": 1785,
-        "total": 1795
+        "nav": 683,
+        "embed": 972,
+        "mount": 1862,
+        "total": 1868
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 663,
+        "requestedAt": 867,
         "status": 200,
-        "ms": 1168,
+        "ms": 1052,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -161,21 +161,21 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-platinum-admission-2026",
-      "checkedAt": "2026-09-27T08:11:51.506Z",
+      "checkedAt": "2026-09-27T08:41:20.204Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.9s",
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 1105,
-        "embed": 1160,
-        "mount": 1924,
-        "total": 2520
+        "nav": 523,
+        "embed": 637,
+        "mount": 1562,
+        "total": 1572
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 930,
+        "requestedAt": 571,
         "status": 200,
-        "ms": 1170,
+        "ms": 789,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -190,21 +190,21 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-upgrade",
-      "checkedAt": "2026-09-27T08:11:52.444Z",
+      "checkedAt": "2026-09-27T08:41:21.482Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.4s",
+      "detail": "Payment fields rendered in 1.9s",
       "timings": {
-        "nav": 666,
-        "embed": 824,
-        "mount": 1447,
-        "total": 1463
+        "nav": 1045,
+        "embed": 1175,
+        "mount": 1878,
+        "total": 2026
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 703,
+        "requestedAt": 1111,
         "status": 200,
-        "ms": 907,
+        "ms": 1283,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -219,21 +219,21 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-upgrade",
-      "checkedAt": "2026-09-27T08:11:52.589Z",
+      "checkedAt": "2026-09-27T08:41:21.786Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.5s",
+      "detail": "Payment fields rendered in 1.7s",
       "timings": {
-        "nav": 657,
-        "embed": 847,
-        "mount": 1545,
-        "total": 1990
+        "nav": 717,
+        "embed": 891,
+        "mount": 1668,
+        "total": 1684
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 824,
+        "requestedAt": 808,
         "status": 200,
-        "ms": 1136,
+        "ms": 1005,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -248,21 +248,21 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade",
-      "checkedAt": "2026-09-27T08:11:53.919Z",
+      "checkedAt": "2026-09-27T08:41:21.984Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.4s",
+      "detail": "Payment fields rendered in 1.7s",
       "timings": {
-        "nav": 763,
-        "embed": 840,
-        "mount": 1441,
-        "total": 1454
+        "nav": 677,
+        "embed": 789,
+        "mount": 1691,
+        "total": 1993
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 787,
+        "requestedAt": 708,
         "status": 200,
-        "ms": 941,
+        "ms": 884,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -277,21 +277,21 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-vip-admission-upgrade",
-      "checkedAt": "2026-09-27T08:11:54.083Z",
+      "checkedAt": "2026-09-27T08:41:23.485Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.2s",
+      "detail": "Payment fields rendered in 1.4s",
       "timings": {
-        "nav": 518,
-        "embed": 628,
-        "mount": 1241,
-        "total": 1252
+        "nav": 735,
+        "embed": 806,
+        "mount": 1422,
+        "total": 1514
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 571,
+        "requestedAt": 751,
         "status": 200,
-        "ms": 726,
+        "ms": 927,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -306,21 +306,21 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade",
-      "checkedAt": "2026-09-27T08:11:54.594Z",
+      "checkedAt": "2026-09-27T08:41:23.553Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.1s",
+      "detail": "Payment fields rendered in 1.4s",
       "timings": {
-        "nav": 1066,
-        "embed": 1151,
-        "mount": 2053,
-        "total": 2474
+        "nav": 691,
+        "embed": 766,
+        "mount": 1406,
+        "total": 1468
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1107,
+        "requestedAt": 733,
         "status": 200,
-        "ms": 1269,
+        "ms": 890,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -335,22 +335,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-09-27T08:11:55.356Z",
+      "checkedAt": "2026-09-27T08:41:23.992Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.4s",
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 623,
-        "embed": 854,
-        "step2": 1353,
-        "mount": 2431,
-        "total": 2791
+        "nav": 889,
+        "embed": 1170,
+        "step2": 1298,
+        "mount": 2051,
+        "total": 2588
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1235,
+        "requestedAt": 1287,
         "status": 200,
-        "ms": 1419,
+        "ms": 1468,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -365,22 +365,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-09-27T08:11:55.388Z",
+      "checkedAt": "2026-09-27T08:41:25.014Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.4s",
+      "detail": "Payment fields rendered in 2.2s",
       "timings": {
-        "nav": 514,
-        "embed": 734,
-        "step2": 1376,
-        "mount": 2390,
-        "total": 2772
+        "nav": 618,
+        "embed": 916,
+        "step2": 1442,
+        "mount": 2247,
+        "total": 2305
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1317,
+        "requestedAt": 1376,
         "status": 200,
-        "ms": 1454,
+        "ms": 1545,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -395,22 +395,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-09-27T08:11:57.115Z",
+      "checkedAt": "2026-09-27T08:41:25.034Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.0s",
+      "detail": "Payment fields rendered in 3.1s",
       "timings": {
-        "nav": 737,
-        "embed": 903,
-        "step2": 1161,
-        "mount": 2032,
-        "total": 2325
+        "nav": 569,
+        "embed": 861,
+        "step2": 1375,
+        "mount": 3051,
+        "total": 3150
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1134,
+        "requestedAt": 1355,
         "status": 200,
-        "ms": 1287,
+        "ms": 1585,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -425,25 +425,25 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-09-27T08:11:58.158Z",
+      "checkedAt": "2026-09-27T08:41:26.594Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.7s",
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 610,
-        "embed": 696,
-        "step2": 1097,
-        "mount": 1688,
-        "total": 2031
+        "nav": 907,
+        "embed": 1042,
+        "step2": 1298,
+        "mount": 2136,
+        "total": 2446
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1022,
+        "requestedAt": 1217,
         "status": 200,
-        "ms": 1166,
+        "ms": 1396,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "UPDATING"
+        "cfCache": "HIT"
       },
       "blockedRequests": 2,
       "screenshot": null,
@@ -455,16 +455,16 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-09-27T08:11:58.175Z",
+      "checkedAt": "2026-09-27T08:41:27.341Z",
       "status": "PASS",
       "reason": null,
       "detail": "ClarityPay Apply button rendered",
       "timings": {
-        "nav": 887,
-        "embed": 997,
-        "step2": 1142,
-        "mount": 1214,
-        "total": 1214
+        "nav": 641,
+        "embed": 863,
+        "step2": 1124,
+        "mount": 1136,
+        "total": 1136
       },
       "elementsJs": null,
       "blockedRequests": 2,
