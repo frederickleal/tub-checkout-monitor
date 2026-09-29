@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-29T21:16:54.222Z",
+  "updatedAt": "2026-09-29T21:41:37.678Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 30,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36631569128",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36634888377",
   "summary": {
     "total": 16,
-    "pass": 0,
+    "pass": 16,
     "warn": 0,
-    "fail": 16
+    "fail": 0
   },
   "results": [
     {
@@ -16,31 +16,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/general-admission-2026",
-      "checkedAt": "2026-09-29T21:12:24.204Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:26.249Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.7s",
       "timings": {
-        "nav": 387,
-        "total": 15460
+        "nav": 807,
+        "embed": 1011,
+        "mount": 1687,
+        "total": 1860
       },
-      "elementsJs": null,
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 887,
+        "status": 200,
+        "ms": 1063,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
+      },
       "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-general.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
-      },
-      "failingSince": "2026-09-29T20:43:42.795Z"
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-vip",
@@ -48,31 +45,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-2026",
-      "checkedAt": "2026-09-29T21:12:24.076Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:26.249Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.9s",
       "timings": {
-        "nav": 364,
-        "total": 15421
+        "nav": 960,
+        "embed": 1067,
+        "mount": 1874,
+        "total": 1904
       },
-      "elementsJs": null,
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 993,
+        "status": 200,
+        "ms": 1144,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
+      },
       "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-vip.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
-      },
-      "failingSince": "2026-09-29T20:43:42.798Z"
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-platinum",
@@ -80,31 +74,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-2026",
-      "checkedAt": "2026-09-29T21:12:24.256Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:26.249Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.9s",
       "timings": {
-        "nav": 464,
-        "total": 15561
+        "nav": 767,
+        "embed": 1109,
+        "mount": 1904,
+        "total": 1938
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-platinum.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 976,
+        "status": 200,
+        "ms": 1223,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:43:42.719Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-general",
@@ -112,31 +103,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-general-admission-2026",
-      "checkedAt": "2026-09-29T21:13:14.804Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:28.142Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.2s",
       "timings": {
-        "nav": 232,
-        "total": 15280
+        "nav": 432,
+        "embed": 537,
+        "mount": 1163,
+        "total": 1211
       },
-      "elementsJs": null,
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 444,
+        "status": 200,
+        "ms": 614,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
+      },
       "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-general.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
-      },
-      "failingSince": "2026-09-29T20:44:33.547Z"
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-vip",
@@ -144,31 +132,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-vip-admission-2026",
-      "checkedAt": "2026-09-29T21:13:15.394Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:28.169Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.9s",
       "timings": {
-        "nav": 295,
-        "total": 15347
+        "nav": 963,
+        "embed": 1144,
+        "mount": 2926,
+        "total": 3287
       },
-      "elementsJs": null,
-      "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-vip.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 1116,
+        "status": 200,
+        "ms": 1315,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:44:33.689Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-platinum",
@@ -176,31 +161,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-platinum-admission-2026",
-      "checkedAt": "2026-09-29T21:13:15.180Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:28.215Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 285,
-        "total": 15348
+        "nav": 584,
+        "embed": 863,
+        "mount": 1623,
+        "total": 1650
       },
-      "elementsJs": null,
-      "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-platinum.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 709,
+        "status": 200,
+        "ms": 1199,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:44:33.898Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-vip",
@@ -208,31 +190,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-upgrade",
-      "checkedAt": "2026-09-29T21:14:05.509Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:29.375Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.8s",
       "timings": {
-        "nav": 225,
-        "total": 15269
+        "nav": 797,
+        "embed": 1263,
+        "mount": 1821,
+        "total": 1838
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-vip.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 661,
+        "status": 200,
+        "ms": 924,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:45:24.249Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-platinum",
@@ -240,31 +219,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T21:14:06.311Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:29.877Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.5s",
       "timings": {
-        "nav": 314,
-        "total": 15358
+        "nav": 544,
+        "embed": 845,
+        "mount": 2455,
+        "total": 2614
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-platinum.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 722,
+        "status": 200,
+        "ms": 1039,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:45:24.511Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-vip-plat",
@@ -272,31 +248,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T21:14:06.139Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:31.229Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 258,
-        "total": 15304
+        "nav": 710,
+        "embed": 882,
+        "mount": 1556,
+        "total": 1866
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-vip-plat.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 816,
+        "status": 200,
+        "ms": 1025,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:45:24.758Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-ga-vip",
@@ -304,31 +277,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-vip-admission-upgrade",
-      "checkedAt": "2026-09-29T21:14:56.172Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:31.476Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.7s",
       "timings": {
-        "nav": 222,
-        "total": 15266
+        "nav": 540,
+        "embed": 1271,
+        "mount": 1664,
+        "total": 1716
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-ga-vip.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 769,
+        "status": 200,
+        "ms": 904,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:46:14.899Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-ga-platinum",
@@ -336,31 +306,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T21:14:57.059Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:32.507Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 281,
-        "total": 15339
+        "nav": 853,
+        "embed": 1239,
+        "mount": 2143,
+        "total": 2375
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-ga-platinum.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#aieb-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 718,
+        "status": 200,
+        "ms": 856,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:46:15.257Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-founder",
@@ -368,29 +335,29 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-09-29T21:14:57.152Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:33.114Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.2s",
       "timings": {
-        "nav": 380,
-        "total": 15478
+        "nav": 708,
+        "embed": 970,
+        "step2": 1296,
+        "mount": 2171,
+        "total": 2186
       },
-      "elementsJs": null,
-      "blockedRequests": 3,
-      "screenshot": "screenshots/a2a-founder.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 1282,
+        "status": 200,
+        "ms": 1427,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:46:16.105Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-team-seat",
@@ -398,29 +365,29 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-09-29T21:15:47.617Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:33.203Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.0s",
       "timings": {
-        "nav": 268,
-        "total": 15344
+        "nav": 584,
+        "embed": 866,
+        "step2": 1542,
+        "mount": 2007,
+        "total": 2016
       },
-      "elementsJs": null,
-      "blockedRequests": 3,
-      "screenshot": "screenshots/a2a-team-seat.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 1404,
+        "status": 200,
+        "ms": 1558,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:47:06.516Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-alumni",
@@ -428,29 +395,29 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-09-29T21:15:47.968Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:34.900Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 391,
-        "total": 15435
+        "nav": 673,
+        "embed": 799,
+        "step2": 1114,
+        "mount": 2096,
+        "total": 2586
       },
-      "elementsJs": null,
-      "blockedRequests": 3,
-      "screenshot": "screenshots/a2a-alumni.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 1048,
+        "status": 200,
+        "ms": 1218,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:47:08.338Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-10pay",
@@ -458,29 +425,29 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-09-29T21:15:48.207Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:35.231Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 343,
-        "total": 15399
+        "nav": 596,
+        "embed": 786,
+        "step2": 1069,
+        "mount": 2090,
+        "total": 2409
       },
-      "elementsJs": null,
-      "blockedRequests": 3,
-      "screenshot": "screenshots/a2a-10pay.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page"
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 1058,
+        "status": 200,
+        "ms": 1214,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "failingSince": "2026-09-29T20:47:07.574Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-clarity",
@@ -488,29 +455,21 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-09-29T21:16:38.842Z",
-      "status": "FAIL",
-      "reason": "embed_missing",
-      "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page",
+      "checkedAt": "2026-09-29T21:41:35.316Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "ClarityPay Apply button rendered",
       "timings": {
-        "nav": 307,
-        "total": 15351
+        "nav": 508,
+        "embed": 711,
+        "step2": 957,
+        "mount": 963,
+        "total": 963
       },
       "elementsJs": null,
-      "blockedRequests": 3,
-      "screenshot": "screenshots/a2a-clarity.png",
-      "httpStatus": 200,
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "embed_missing",
-        "detail": "#a2a-checkout never appeared — our checkout embed (worker) did not render on this page"
-      },
-      "failingSince": "2026-09-29T20:47:58.010Z"
+      "blockedRequests": 4,
+      "screenshot": null,
+      "httpStatus": 200
     }
   ]
 }
