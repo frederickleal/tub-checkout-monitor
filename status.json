@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-29T15:20:47.609Z",
+  "updatedAt": "2026-09-29T15:44:54.379Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 30,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36588627974",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36592455999",
   "summary": {
     "total": 16,
-    "pass": 5,
+    "pass": 16,
     "warn": 0,
-    "fail": 11
+    "fail": 0
   },
   "results": [
     {
@@ -16,40 +16,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/general-admission-2026",
-      "checkedAt": "2026-09-29T15:15:38.400Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:41.657Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.5s",
       "timings": {
-        "nav": 268,
-        "embed": 429,
-        "total": 35473
+        "nav": 625,
+        "embed": 861,
+        "mount": 1504,
+        "total": 1602
       },
-      "elementsJs": null,
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 769,
+        "status": 200,
+        "ms": 920,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "UPDATING"
+      },
       "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-general.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
-      },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:15:38.400Z"
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-vip",
@@ -57,40 +45,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-2026",
-      "checkedAt": "2026-09-29T15:15:38.723Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:41.657Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 405,
-        "embed": 567,
-        "total": 35643
+        "nav": 732,
+        "embed": 961,
+        "mount": 2076,
+        "total": 2712
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-vip.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 870,
+        "status": 200,
+        "ms": 1076,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:15:38.723Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-platinum",
@@ -98,40 +74,28 @@
       "funnel": "AIEB organic",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-2026",
-      "checkedAt": "2026-09-29T15:15:38.673Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:41.657Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.5s",
       "timings": {
-        "nav": 390,
-        "embed": 576,
-        "total": 35625
+        "nav": 516,
+        "embed": 778,
+        "mount": 1510,
+        "total": 1560
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-platinum.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 671,
+        "status": 200,
+        "ms": 884,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "UPDATING"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:15:38.673Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-general",
@@ -139,40 +103,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-general-admission-2026",
-      "checkedAt": "2026-09-29T15:17:09.513Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:43.229Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 3.2s",
       "timings": {
-        "nav": 285,
-        "embed": 400,
-        "total": 35443
+        "nav": 752,
+        "embed": 1058,
+        "mount": 3218,
+        "total": 3283
       },
-      "elementsJs": null,
-      "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-general.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 476,
+        "status": 200,
+        "ms": 778,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:17:09.513Z"
+      "blockedRequests": 5,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-vip",
@@ -180,40 +132,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-vip-admission-2026",
-      "checkedAt": "2026-09-29T15:17:09.903Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:43.277Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.3s",
       "timings": {
-        "nav": 392,
-        "embed": 576,
-        "total": 35625
+        "nav": 768,
+        "embed": 926,
+        "mount": 2309,
+        "total": 2763
       },
-      "elementsJs": null,
-      "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-vip.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 835,
+        "status": 200,
+        "ms": 988,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:17:09.903Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-ads-platinum",
@@ -221,40 +161,28 @@
       "funnel": "AIEB ads",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ads-platinum-admission-2026",
-      "checkedAt": "2026-09-29T15:17:09.988Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:44.395Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.0s",
       "timings": {
-        "nav": 380,
-        "embed": 617,
-        "total": 35661
+        "nav": 828,
+        "embed": 964,
+        "mount": 1959,
+        "total": 2514
       },
-      "elementsJs": null,
-      "blockedRequests": 6,
-      "screenshot": "screenshots/aieb-ads-platinum.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 873,
+        "status": 200,
+        "ms": 1058,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:17:09.988Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-vip",
@@ -262,40 +190,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-admission-upgrade",
-      "checkedAt": "2026-09-29T15:18:40.494Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:46.060Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.2s",
       "timings": {
-        "nav": 275,
-        "embed": 327,
-        "total": 35368
+        "nav": 673,
+        "embed": 776,
+        "mount": 1183,
+        "total": 1190
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-vip.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 688,
+        "status": 200,
+        "ms": 826,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:18:40.494Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-platinum",
@@ -303,40 +219,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T15:18:41.166Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:46.559Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.5s",
       "timings": {
-        "nav": 253,
-        "embed": 420,
-        "total": 35463
+        "nav": 527,
+        "embed": 756,
+        "mount": 1478,
+        "total": 1557
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-platinum.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 678,
+        "status": 200,
+        "ms": 861,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:18:41.166Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-vip-plat",
@@ -344,40 +248,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/vip-platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T15:18:41.406Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:46.933Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 333,
-        "embed": 476,
-        "total": 35528
+        "nav": 540,
+        "embed": 714,
+        "mount": 1636,
+        "total": 2300
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-vip-plat.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 567,
+        "status": 200,
+        "ms": 771,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:18:41.406Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-ga-vip",
@@ -385,40 +277,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-vip-admission-upgrade",
-      "checkedAt": "2026-09-29T15:20:11.433Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:47.266Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 2.1s",
       "timings": {
-        "nav": 336,
-        "embed": 457,
-        "total": 35500
+        "nav": 453,
+        "embed": 819,
+        "mount": 2088,
+        "total": 2760
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-ga-vip.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 655,
+        "status": 200,
+        "ms": 1032,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:20:11.433Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "aieb-up-ga-platinum",
@@ -426,40 +306,28 @@
       "funnel": "AIEB upgrades",
       "type": "aieb",
       "url": "https://go.theuncommonbusiness.co/ga-platinum-admission-upgrade",
-      "checkedAt": "2026-09-29T15:20:12.139Z",
-      "status": "FAIL",
-      "reason": "elements_js_not_requested",
-      "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()",
+      "checkedAt": "2026-09-29T15:44:48.139Z",
+      "status": "PASS",
+      "reason": null,
+      "detail": "Payment fields rendered in 1.6s",
       "timings": {
-        "nav": 286,
-        "embed": 382,
-        "total": 35423
+        "nav": 540,
+        "embed": 820,
+        "mount": 1593,
+        "total": 2336
       },
-      "elementsJs": null,
-      "blockedRequests": 5,
-      "screenshot": "screenshots/aieb-up-ga-platinum.png",
-      "httpStatus": 200,
-      "diag": {
-        "whopElements": "undefined",
-        "errorText": "",
-        "iframePresent": false,
-        "iframeHeight": null,
-        "containerHeight": null,
-        "hostSeen": null
+      "elementsJs": {
+        "url": "https://cdn.whop.com/elements/amber/elements.js",
+        "requestedAt": 671,
+        "status": 200,
+        "ms": 941,
+        "cfMitigated": null,
+        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
+        "cfCache": "HIT"
       },
-      "consoleErrors": [
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: the server responded with a status of 400 ()",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
-        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
-      ],
-      "firstAttempt": {
-        "status": "FAIL",
-        "reason": "elements_js_not_requested",
-        "detail": "Page never requested Whop's elements.js — embed did not reach loadElements()"
-      },
-      "failingSince": "2026-09-29T15:20:12.139Z"
+      "blockedRequests": 1,
+      "screenshot": null,
+      "httpStatus": 200
     },
     {
       "id": "a2a-founder",
@@ -467,25 +335,25 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-09-29T15:19:16.941Z",
+      "checkedAt": "2026-09-29T15:44:49.254Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.4s",
+      "detail": "Payment fields rendered in 3.2s",
       "timings": {
-        "nav": 398,
-        "embed": 633,
-        "step2": 853,
-        "mount": 1433,
-        "total": 1695
+        "nav": 798,
+        "embed": 970,
+        "step2": 1366,
+        "mount": 3171,
+        "total": 3450
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 775,
+        "requestedAt": 1347,
         "status": 200,
-        "ms": 951,
+        "ms": 1621,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "UPDATING"
+        "cfCache": "HIT"
       },
       "blockedRequests": 4,
       "screenshot": null,
@@ -497,25 +365,25 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-09-29T15:19:18.644Z",
+      "checkedAt": "2026-09-29T15:44:50.047Z",
       "status": "PASS",
       "reason": null,
       "detail": "Payment fields rendered in 2.2s",
       "timings": {
-        "nav": 1423,
-        "embed": 1654,
-        "step2": 1928,
-        "mount": 2201,
-        "total": 2212
+        "nav": 584,
+        "embed": 982,
+        "step2": 1632,
+        "mount": 2228,
+        "total": 2321
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1868,
+        "requestedAt": 1621,
         "status": 200,
-        "ms": 1975,
+        "ms": 1769,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "UPDATING"
+        "cfCache": "HIT"
       },
       "blockedRequests": 4,
       "screenshot": null,
@@ -527,22 +395,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-09-29T15:19:20.862Z",
+      "checkedAt": "2026-09-29T15:44:50.494Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 3.4s",
+      "detail": "Payment fields rendered in 2.9s",
       "timings": {
-        "nav": 2518,
-        "embed": 2734,
-        "step2": 2867,
-        "mount": 3431,
-        "total": 3711
+        "nav": 600,
+        "embed": 1057,
+        "step2": 1987,
+        "mount": 2869,
+        "total": 3393
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 2840,
+        "requestedAt": 1461,
         "status": 200,
-        "ms": 3009,
+        "ms": 1802,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -557,22 +425,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-09-29T15:19:24.581Z",
+      "checkedAt": "2026-09-29T15:44:52.386Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 1.3s",
+      "detail": "Payment fields rendered in 1.9s",
       "timings": {
-        "nav": 371,
-        "embed": 488,
-        "step2": 655,
-        "mount": 1263,
-        "total": 1540
+        "nav": 899,
+        "embed": 1079,
+        "step2": 1571,
+        "mount": 1920,
+        "total": 1935
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 642,
+        "requestedAt": 1380,
         "status": 200,
-        "ms": 753,
+        "ms": 1571,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -587,16 +455,16 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-09-29T15:19:26.130Z",
+      "checkedAt": "2026-09-29T15:44:52.716Z",
       "status": "PASS",
       "reason": null,
       "detail": "ClarityPay Apply button rendered",
       "timings": {
-        "nav": 1635,
-        "embed": 1755,
-        "step2": 1871,
-        "mount": 1876,
-        "total": 1876
+        "nav": 647,
+        "embed": 836,
+        "step2": 1229,
+        "mount": 1347,
+        "total": 1347
       },
       "elementsJs": null,
       "blockedRequests": 4,
