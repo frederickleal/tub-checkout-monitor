@@ -23,6 +23,8 @@ const cases = [
   ["error shown to buyer", "/aieb?mode=error",       "FAIL", "checkout_error_shown"],
   ["embed missing",      "/nope",                    "FAIL", "page_http_error"],
   ["a2a challenge",      "/a2a?mode=challenge",      "FAIL", "cloudflare_challenge"],
+  ["url redirects away",  "/a2a?mode=redirect",       "FAIL", "redirected"],
+  ["cart closed message", "/aieb?mode=closed",        "FAIL", "checkout_error_shown"],
 ];
 
 (async () => {

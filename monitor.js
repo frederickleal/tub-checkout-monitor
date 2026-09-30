@@ -130,13 +130,19 @@ async function checkPage(browser, pg) {
     r.timings.nav = ms(t0);
     r.httpStatus = resp ? resp.status() : null;
     if (!resp || resp.status() >= 400) throw fail("page_http_error", `Page returned HTTP ${resp ? resp.status() : "no response"}`);
+    assertNotRedirected(page, pg);
 
     const prefix = pg.type === "aieb" ? "aieb" : "a2a";
     const root = `#${prefix}-checkout`;
 
     // 2. Our embed must have rendered its container
     try { await page.waitForSelector(root, { timeout: 15000 }); }
-    catch { throw fail("embed_missing", `${root} never appeared — our checkout embed (worker) did not render on this page`); }
+    catch {
+      assertNotRedirected(page, pg);
+      const txt = await visibleErrorText(page, prefix);
+      if (txt) throw fail("checkout_error_shown", `Checkout showed an error to the buyer: "${txt}"`);
+      throw fail("embed_missing", `${root} never appeared — our checkout embed (worker) did not render on this page`);
+    }
     r.timings.embed = ms(t0);
 
     // 3. Two-step checkouts: fill step 1 and continue (contact API is blocked above)
@@ -194,6 +200,10 @@ async function checkPage(browser, pg) {
         };
       }, { container, prefix, anySel: WHOP_ANY_IFRAME_SEL });
       r.diag = diag;
+      // Our embed refused before even loading Whop (e.g. "ga is not on sale right now" at cart close):
+      // the buyer-facing message is the real reason. When Whop's script DID load/fail, the lower-level
+      // reason below (Cloudflare, network...) is more useful than our generic "could not load" text.
+      if (diag.errorText && !r.elementsJs) throw fail("checkout_error_shown", `Checkout showed an error to the buyer: "${diag.errorText}"`);
       if (r.elementsJs && r.elementsJs.url && (r.elementsJs.status === undefined || r.elementsJs.status === 0 || r.elementsJs.error)) {
         // Chrome hides a blocked script response (ORB), so ask the same URL directly from this
         // runner and read the headers Cloudflare would have sent to the browser.
@@ -246,6 +256,21 @@ async function checkPage(browser, pg) {
 }
 
 function fail(code, message) { const e = new Error(message); e.code = code; return e; }
+
+// A checkout URL that now lands on a different page (e.g. the sales page) is down for buyers,
+// even though the page itself loads fine. Query strings and trailing slashes are ignored.
+function assertNotRedirected(page, pg) {
+  const norm = (u) => { try { const x = new URL(u); return x.host + x.pathname.replace(/\/+$/, ""); } catch { return u; } };
+  const now = page.url();
+  if (norm(now) !== norm(pg.url)) throw fail("redirected", `Checkout URL now redirects to ${now.split("?")[0]} — buyers never see the checkout`);
+}
+
+async function visibleErrorText(page, prefix) {
+  return page.evaluate((prefix) => {
+    const el = document.querySelector(`.${prefix}-error`);
+    return el && getComputedStyle(el).display !== "none" ? el.textContent.trim() : "";
+  }, prefix).catch(() => "");
+}
 
 async function assertNoError(page, prefix) {
   const txt = await page.evaluate((prefix) => {
@@ -315,7 +340,8 @@ async function notify(results, prev, meta) {
     const sameReason = newlyFailing.length >= 5 && new Set(newlyFailing.map((r) => r.reason)).size === 1;
     const sanity = sameReason ? `\n⚠️ _${newlyFailing.length} pages failed at once with the same reason (${newlyFailing[0].reason}). When everything fails simultaneously right after a healthy streak, suspect a change on Whop's or our side that the monitor doesn't recognise yet — open one checkout in a real browser before escalating._` : "";
     const lines = newlyFailing.map((r) => `• *${r.label}* — ${r.detail}\n   <${r.url}|${r.url.replace("https://", "")}>` + (r.elementsJs ? `  · elements.js HTTP ${r.elementsJs.status}${r.elementsJs.cfMitigated ? ` (cf-mitigated: ${r.elementsJs.cfMitigated})` : ""}` : ""));
-    await slack(`🔴 *CHECKOUT DOWN — ${newlyFailing.length} page${newlyFailing.length > 1 ? "s" : ""} failing* (confirmed on 2 attempts, 20s apart)\n${lines.join("\n")}` +
+    const mention = process.env.ALERT_MENTION === undefined ? "<!here> " : (process.env.ALERT_MENTION ? process.env.ALERT_MENTION + " " : "");
+    await slack(`${mention}🔴 *CHECKOUT DOWN — ${newlyFailing.length} page${newlyFailing.length > 1 ? "s" : ""} failing* (confirmed on 2 attempts, 20s apart)\n${lines.join("\n")}` +
       (stillFailing.length ? `\n_${stillFailing.length} other page(s) still failing from earlier._` : "") +
       `\n*Checked from:* ${meta.vantage}${sanity}${links()}`);
   } else if (stillFailing.length && meta.everyNthReminder) {

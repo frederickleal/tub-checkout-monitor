@@ -90,6 +90,9 @@ const server = http.createServer((req, res) => {
     res.end(elementsJs.replace(/PORT/g, String(PORT))); return;
   }
   if (u.pathname.startsWith("/frame/")) { res.setHeader("content-type", "text/html"); res.end("<html><body>card fields</body></html>"); return; }
+  if (u.query.mode === "redirect") { res.writeHead(302, { location: "/sales-page" }); res.end(); return; }
+  if (u.pathname === "/sales-page") { res.setHeader("content-type", "text/html"); res.end("<html><body><h1>Sales page</h1><a href='#'>Buy</a></body></html>"); return; }
+  if (u.query.mode === "closed") { res.setHeader("content-type", "text/html"); res.end(`<html><body><div class="aieb-error" style="display:block">ga is not on sale right now</div></body></html>`); return; }
   const m = u.pathname.match(/^\/(aieb|a2a|a2a-clarity)$/);
   if (m) { res.setHeader("content-type", "text/html"); res.end(page(m[1], u.query.mode || "ok").replace(/PORT/g, String(PORT))); return; }
   res.writeHead(404); res.end("nope");

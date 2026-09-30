@@ -32,6 +32,7 @@ Result per page: `PASS` (rendered < 10s) · `WARN` (rendered, but > 10s) · `FAI
 | `payment_iframe_empty` | Iframe created but stayed 0px — Whop's side never drew the fields. |
 | `checkout_error_shown` | Our error box is visible to the buyer (text included in the alert). |
 | `step1_blocked` / `step2_missing` | A2A step 1 → 2 flow broken (quote/validation). |
+| `redirected` | The checkout URL now lands on a different page (e.g. the sales page) — buyers never reach checkout. **Seen 24–25 Sep 2026:** all A2A checkout URLs redirected to the SuperHuman Work page for ~18h. |
 | `embed_missing` / `page_http_error` | Our worker didn't render, or the page itself is 4xx/5xx. |
 | `monitor_pattern_stale` | Whop's script ran and a Whop iframe exists, but its URL didn't match what the monitor expects. **Checkout is probably fine** — Whop moved hosts again; update `WHOP_SCRIPT_RE` in `monitor.js`. |
 
@@ -47,7 +48,8 @@ Convert, WiserNotify, ManyChat, FirstPromoter, Cloudflare Insights, and the `con
 
 ## Where to see it
 
-- **Slack** — set `SLACK_WEBHOOK_URL` (repo secret). You get: 🔴 one alert when a page goes down (with reason,
+- **Slack** — alerts post to **#war-room** (since 29 Sep 2026) via the `SLACK_WEBHOOK_URL` repo secret; DOWN alerts
+  start with `@here` (override with repo variable `ALERT_MENTION`, empty = no mention). You get: 🔴 one alert when a page goes down (with reason,
   elements.js status and links), a "still down" reminder every ~4h while it stays down, ✅ one message when it
   recovers, ⚠️ a note when a page turns slow, 🚨 a message if the *monitor itself* crashes. **Nothing is sent while everything is healthy** — no daily
   summary (removed 23 Sep 2026 at Frederick's request). To confirm the monitor is alive, glance at the status
