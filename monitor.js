@@ -344,8 +344,12 @@ async function notify(results, prev, meta) {
     await slack(`${mention}🔴 *CHECKOUT DOWN — ${newlyFailing.length} page${newlyFailing.length > 1 ? "s" : ""} failing* (confirmed on 2 attempts, 20s apart)\n${lines.join("\n")}` +
       (stillFailing.length ? `\n_${stillFailing.length} other page(s) still failing from earlier._` : "") +
       `\n*Checked from:* ${meta.vantage}${sanity}${links()}`);
-  } else if (stillFailing.length && meta.everyNthReminder) {
-    await slack(`🔴 *Still down:* ${stillFailing.map((r) => r.label).join(", ")} — failing since ${prevBy[stillFailing[0].id].failingSince || "earlier"}${links()}`);
+  }
+  const due = stillFailing.filter((r) => r.remindNow);
+  if (due.length) {
+    const dur = (t) => { const m = Math.max(1, Math.round((Date.now() - new Date(t).getTime()) / 60000)); return m >= 60 ? `${Math.floor(m / 60)}h ${m % 60}m` : `${m}m`; };
+    await slack(`🔴 *Still down:* ${due.length} checkout page${due.length > 1 ? "s" : ""}\n` +
+      due.map((r) => `• *${r.label}* — down for ${dur(r.failingSince)} · ${r.detail}`).join("\n") + links());
   }
   if (recovered.length) {
     await slack(`✅ *Recovered:* ${recovered.map((r) => `*${r.label}*`).join(", ")} — payment fields rendering again.${links()}`);
@@ -375,7 +379,7 @@ async function dailySummary(results, history) {
   let pages = cfg.pages.filter((p) => p.enabled !== false);
   if (ONLY.length) pages = pages.filter((p) => ONLY.includes(p.id));
   const vantage = process.env.VANTAGE || (process.env.GITHUB_ACTIONS ? `GitHub Actions runner (${process.env.RUNNER_NAME || "cloud"})` : require("os").hostname());
-  const meta = { vantage, everyNthReminder: new Date().getUTCMinutes() < 30 && new Date().getUTCHours() % 4 === 0 };
+  const meta = { vantage };
 
   console.log(`TUB Checkout Monitor · ${now()} · ${pages.length} pages · from ${vantage}`);
   const prev = readJson(path.join(STATE_DIR, "status.json"), { results: [] });
@@ -392,6 +396,19 @@ async function dailySummary(results, history) {
   // carry "failing since" forward
   const prevBy = Object.fromEntries((prev.results || []).map((r) => [r.id, r]));
   for (const r of results) if (r.status === "FAIL") r.failingSince = prevBy[r.id]?.status === "FAIL" ? (prevBy[r.id].failingSince || prevBy[r.id].checkedAt) : r.checkedAt;
+
+  // "Still down" reminders: every REMINDER_MINUTES (default 30) per page, measured from the last alert
+  // for that page — not from the clock, so late GitHub runs don't skip a reminder. 5 min tolerance
+  // because scheduled runs drift a few minutes.
+  const REMIND_MS = Number(process.env.REMINDER_MINUTES || 30) * 60000;
+  for (const r of results) {
+    if (r.status !== "FAIL") continue;
+    const p = prevBy[r.id];
+    if (!p || p.status !== "FAIL") { r.lastAlertAt = r.checkedAt; continue; }   // the DOWN alert goes out this run
+    const last = p.lastAlertAt || p.failingSince || p.checkedAt;
+    if (Date.now() - new Date(last).getTime() >= REMIND_MS - 5 * 60000) { r.lastAlertAt = now(); r.remindNow = true; }
+    else r.lastAlertAt = last;
+  }
 
   const status = { updatedAt: now(), vantage, intervalMinutes: Number(process.env.INTERVAL_MINUTES || 30), runUrl: process.env.RUN_URL || null,
                    summary: { total: results.length, pass: results.filter((r) => r.status === "PASS").length, warn: results.filter((r) => r.status === "WARN").length, fail: results.filter((r) => r.status === "FAIL").length },

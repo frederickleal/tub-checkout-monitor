@@ -2,9 +2,9 @@ name: Checkout monitor
 
 on:
   schedule:
-    # Every 30 minutes. GitHub may delay scheduled runs a few minutes under load.
+    # Every 15 minutes. GitHub may delay scheduled runs a few minutes under load.
     # To change cadence, edit this line only (e.g. "*/15 * * * *" for launch days).
-    - cron: "*/30 * * * *"
+    - cron: "*/15 * * * *"
     # No scheduled daily summary: Slack only hears from the monitor when something is wrong
     # (down, still down, recovered, slow, or the monitor itself crashed). Run manually with
     # summary=true if you want one.
@@ -36,7 +36,8 @@ jobs:
       STATUS_PAGE_URL: ${{ vars.STATUS_PAGE_URL }}
       MONITOR_EMAIL: ${{ vars.MONITOR_EMAIL }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-      INTERVAL_MINUTES: "30"
+      INTERVAL_MINUTES: "15"
+      REMINDER_MINUTES: "30"   # "Still down" reminder cadence per failing page
       VANTAGE: "GitHub Actions (cloud runner, US)"
     steps:
       - uses: actions/checkout@v4
