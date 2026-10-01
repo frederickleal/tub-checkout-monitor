@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-01T17:09:39.580Z",
+  "updatedAt": "2026-10-01T17:27:48.281Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 15,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36897140162",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/36899479295",
   "summary": {
     "total": 5,
     "pass": 5,
@@ -16,25 +16,25 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-10-01T17:09:34.397Z",
+      "checkedAt": "2026-10-01T17:27:44.068Z",
       "status": "PASS",
       "reason": null,
       "detail": "Payment fields rendered in 2.0s",
       "timings": {
-        "nav": 535,
-        "embed": 820,
-        "step2": 1064,
-        "mount": 2046,
-        "total": 2326
+        "nav": 1055,
+        "embed": 1149,
+        "step2": 1309,
+        "mount": 1963,
+        "total": 2108
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1016,
+        "requestedAt": 1292,
         "status": 200,
-        "ms": 1268,
+        "ms": 1459,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+        "cfCache": "UPDATING"
       },
       "blockedRequests": 4,
       "screenshot": null,
@@ -46,22 +46,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-10-01T17:09:34.397Z",
+      "checkedAt": "2026-10-01T17:27:44.068Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.8s",
+      "detail": "Payment fields rendered in 2.7s",
       "timings": {
-        "nav": 1347,
-        "embed": 1767,
-        "step2": 2373,
-        "mount": 2780,
-        "total": 2869
+        "nav": 730,
+        "embed": 962,
+        "step2": 1434,
+        "mount": 2670,
+        "total": 3089
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 2356,
+        "requestedAt": 1326,
         "status": 200,
-        "ms": 2468,
+        "ms": 1567,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -76,25 +76,25 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-10-01T17:09:34.398Z",
+      "checkedAt": "2026-10-01T17:27:44.068Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 3.1s",
+      "detail": "Payment fields rendered in 2.4s",
       "timings": {
-        "nav": 1132,
-        "embed": 2173,
-        "step2": 2365,
-        "mount": 3149,
-        "total": 3443
+        "nav": 768,
+        "embed": 958,
+        "step2": 1284,
+        "mount": 2418,
+        "total": 2808
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 2331,
+        "requestedAt": 1249,
         "status": 200,
-        "ms": 2482,
+        "ms": 1510,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+        "cfCache": "UPDATING"
       },
       "blockedRequests": 4,
       "screenshot": null,
@@ -106,22 +106,22 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-10-01T17:09:36.748Z",
+      "checkedAt": "2026-10-01T17:27:46.194Z",
       "status": "PASS",
       "reason": null,
-      "detail": "Payment fields rendered in 2.8s",
+      "detail": "Payment fields rendered in 1.8s",
       "timings": {
-        "nav": 1840,
-        "embed": 2282,
-        "step2": 2461,
-        "mount": 2774,
-        "total": 2785
+        "nav": 744,
+        "embed": 1039,
+        "step2": 1179,
+        "mount": 1784,
+        "total": 2054
       },
       "elementsJs": {
         "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 2453,
+        "requestedAt": 1167,
         "status": 200,
-        "ms": 2559,
+        "ms": 1309,
         "cfMitigated": null,
         "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
         "cfCache": "HIT"
@@ -136,19 +136,19 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-10-01T17:09:37.278Z",
+      "checkedAt": "2026-10-01T17:27:46.893Z",
       "status": "PASS",
       "reason": null,
       "detail": "ClarityPay Apply button rendered",
       "timings": {
-        "nav": 1461,
-        "embed": 1615,
-        "step2": 1778,
-        "mount": 1786,
-        "total": 1786
+        "nav": 526,
+        "embed": 615,
+        "step2": 703,
+        "mount": 709,
+        "total": 709
       },
       "elementsJs": null,
-      "blockedRequests": 4,
+      "blockedRequests": 2,
       "screenshot": null,
       "httpStatus": 200
     }
