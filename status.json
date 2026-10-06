@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-10-06T02:06:52.043Z",
+  "updatedAt": "2026-10-06T02:28:10.064Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 15,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/37402485815",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/37404122972",
   "summary": {
     "total": 5,
-    "pass": 5,
+    "pass": 0,
     "warn": 0,
-    "fail": 0
+    "fail": 5
   },
   "results": [
     {
@@ -16,29 +16,31 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-10-06T02:06:47.111Z",
-      "status": "PASS",
-      "reason": null,
-      "detail": "Payment fields rendered in 3.1s",
+      "checkedAt": "2026-10-06T02:27:22.980Z",
+      "status": "FAIL",
+      "reason": "step2_missing",
+      "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 644,
-        "embed": 958,
-        "step2": 1308,
-        "mount": 3109,
-        "total": 3594
+        "nav": 502,
+        "embed": 754,
+        "total": 9198
       },
-      "elementsJs": {
-        "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1286,
-        "status": 200,
-        "ms": 1480,
-        "cfMitigated": null,
-        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+      "elementsJs": null,
+      "blockedRequests": 3,
+      "screenshot": "screenshots/a2a-founder.png",
+      "httpStatus": 200,
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "firstAttempt": {
+        "status": "FAIL",
+        "reason": "step2_missing",
+        "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
-      "blockedRequests": 4,
-      "screenshot": null,
-      "httpStatus": 200
+      "failingSince": "2026-10-06T02:27:22.980Z",
+      "lastAlertAt": "2026-10-06T02:27:22.980Z"
     },
     {
       "id": "a2a-team-seat",
@@ -46,29 +48,31 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-10-06T02:06:47.111Z",
-      "status": "PASS",
-      "reason": null,
-      "detail": "Payment fields rendered in 3.4s",
+      "checkedAt": "2026-10-06T02:27:23.113Z",
+      "status": "FAIL",
+      "reason": "step2_missing",
+      "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 697,
-        "embed": 942,
-        "step2": 1557,
-        "mount": 3371,
-        "total": 3588
+        "nav": 589,
+        "embed": 728,
+        "total": 9247
       },
-      "elementsJs": {
-        "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1540,
-        "status": 200,
-        "ms": 1684,
-        "cfMitigated": null,
-        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+      "elementsJs": null,
+      "blockedRequests": 3,
+      "screenshot": "screenshots/a2a-team-seat.png",
+      "httpStatus": 200,
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "firstAttempt": {
+        "status": "FAIL",
+        "reason": "step2_missing",
+        "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
-      "blockedRequests": 4,
-      "screenshot": null,
-      "httpStatus": 200
+      "failingSince": "2026-10-06T02:27:23.113Z",
+      "lastAlertAt": "2026-10-06T02:27:23.113Z"
     },
     {
       "id": "a2a-alumni",
@@ -76,29 +80,31 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-10-06T02:06:47.111Z",
-      "status": "PASS",
-      "reason": null,
-      "detail": "Payment fields rendered in 2.0s",
+      "checkedAt": "2026-10-06T02:27:22.981Z",
+      "status": "FAIL",
+      "reason": "step2_missing",
+      "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 612,
-        "embed": 789,
-        "step2": 1266,
-        "mount": 2049,
-        "total": 2362
+        "nav": 532,
+        "embed": 709,
+        "total": 9117
       },
-      "elementsJs": {
-        "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1166,
-        "status": 200,
-        "ms": 1433,
-        "cfMitigated": null,
-        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+      "elementsJs": null,
+      "blockedRequests": 3,
+      "screenshot": "screenshots/a2a-alumni.png",
+      "httpStatus": 200,
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "firstAttempt": {
+        "status": "FAIL",
+        "reason": "step2_missing",
+        "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
-      "blockedRequests": 4,
-      "screenshot": null,
-      "httpStatus": 200
+      "failingSince": "2026-10-06T02:27:22.981Z",
+      "lastAlertAt": "2026-10-06T02:27:22.981Z"
     },
     {
       "id": "a2a-10pay",
@@ -106,29 +112,31 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-10-06T02:06:49.499Z",
-      "status": "PASS",
-      "reason": null,
-      "detail": "Payment fields rendered in 2.5s",
+      "checkedAt": "2026-10-06T02:28:01.130Z",
+      "status": "FAIL",
+      "reason": "step2_missing",
+      "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 702,
-        "embed": 910,
-        "step2": 1384,
-        "mount": 2450,
-        "total": 2497
+        "nav": 427,
+        "embed": 572,
+        "total": 8797
       },
-      "elementsJs": {
-        "url": "https://cdn.whop.com/elements/amber/elements.js",
-        "requestedAt": 1311,
-        "status": 200,
-        "ms": 1416,
-        "cfMitigated": null,
-        "cacheControl": "public, max-age=30, stale-while-revalidate=86400",
-        "cfCache": "HIT"
+      "elementsJs": null,
+      "blockedRequests": 3,
+      "screenshot": "screenshots/a2a-10pay.png",
+      "httpStatus": 200,
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "firstAttempt": {
+        "status": "FAIL",
+        "reason": "step2_missing",
+        "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
-      "blockedRequests": 4,
-      "screenshot": null,
-      "httpStatus": 200
+      "failingSince": "2026-10-06T02:28:01.130Z",
+      "lastAlertAt": "2026-10-06T02:28:01.130Z"
     },
     {
       "id": "a2a-clarity",
@@ -136,21 +144,31 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-10-06T02:06:50.721Z",
-      "status": "PASS",
-      "reason": null,
-      "detail": "ClarityPay Apply button rendered",
+      "checkedAt": "2026-10-06T02:28:01.130Z",
+      "status": "FAIL",
+      "reason": "step2_missing",
+      "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 619,
-        "embed": 759,
-        "step2": 960,
-        "mount": 994,
-        "total": 994
+        "nav": 401,
+        "embed": 540,
+        "total": 8898
       },
       "elementsJs": null,
-      "blockedRequests": 4,
-      "screenshot": null,
-      "httpStatus": 200
+      "blockedRequests": 3,
+      "screenshot": "screenshots/a2a-clarity.png",
+      "httpStatus": 200,
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector",
+        "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      ],
+      "firstAttempt": {
+        "status": "FAIL",
+        "reason": "step2_missing",
+        "detail": "Clicked Continue but step 2 (payment pane) never showed"
+      },
+      "failingSince": "2026-10-06T02:28:01.130Z",
+      "lastAlertAt": "2026-10-06T02:28:01.130Z"
     }
   ]
 }
