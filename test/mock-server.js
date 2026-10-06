@@ -33,10 +33,12 @@ function page(kind, mode) {
   ${twoStep ? `
   <div id="a2a-pane1">
     <input id="a2a-first" placeholder="First"><input id="a2a-last" placeholder="Last">
-    <input id="a2a-email" placeholder="Email"><input id="a2a-phone" placeholder="Phone">
+    <input id="a2a-email" type="email" placeholder="Email"><input id="a2a-email-confirm" type="email" placeholder="Confirm Email"><input id="a2a-phone" type="tel" placeholder="Phone">
+    ${mode === "newfield" ? `<input id="a2a-referral" type="text" placeholder="How did you hear about us?">` : ""}
     <button id="a2a-minus">−</button><span id="a2a-qty">0</span><button id="a2a-plus">+</button>
     <div id="a2a-companywrap" hidden><input id="a2a-company"></div>
-    <button id="a2a-continue" disabled>Continue to Payment →</button>
+    <button id="a2a-continue">Continue to Payment →</button>
+    <p id="a2a-notice" hidden></p>
   </div>
   <div id="a2a-pane2" hidden>
     ${kind === "a2a-clarity" ? `<button class="a2a-btn">Apply with ClarityPay</button>` : `<div id="a2a-payment-element" style="min-height:60px"></div><button id="a2a-pay">Complete Order</button>`}
@@ -62,10 +64,24 @@ function page(kind, mode) {
     }).catch(function(){ showError('Checkout could not load. Please refresh the page.'); });
   }
   ${twoStep ? `
-  function validate(){ var ok=/@/.test(document.querySelector('#a2a-email').value) && document.querySelector('#a2a-first').value; document.querySelector('#a2a-continue').disabled=!ok; }
-  ['a2a-first','a2a-last','a2a-email','a2a-phone'].forEach(function(id){ document.getElementById(id).addEventListener('input', validate); });
+  // Mirrors the live A2A form (6 Oct 2026): Continue is never disabled; pressing it checks the fields and
+  // shows a red notice right after the first missing one.
+  function v(id){ var e=document.getElementById(id); return e ? e.value.trim() : ''; }
+  function missing(){
+    if (!v('a2a-first')) return ['a2a-first','Enter your first name.'];
+    if (!/@/.test(v('a2a-email'))) return ['a2a-email','Enter a valid email address.'];
+    if (!v('a2a-email-confirm')) return ['a2a-email-confirm','Please confirm your email address.'];
+    if (v('a2a-email-confirm').toLowerCase() !== v('a2a-email').toLowerCase()) return ['a2a-email-confirm',"Email addresses don't match."];
+    if (!v('a2a-phone')) return ['a2a-phone','Enter your phone number.'];
+    if (document.getElementById('a2a-referral') && !v('a2a-referral')) return ['a2a-referral','Tell us how you heard about us.'];
+    if (mode==='stuck') return ['a2a-first','Something went wrong. Please try again.'];
+    return null;
+  }
+  function notice(id,msg){ var n=document.getElementById('a2a-notice'); var f=document.getElementById(id); f.parentNode.insertBefore(n, f.nextSibling); n.textContent=msg; n.hidden=false; f.focus(); }
   document.querySelector('#a2a-plus').addEventListener('click', function(){ document.querySelector('#a2a-qty').textContent='1'; document.querySelector('#a2a-companywrap').hidden=false; });
   document.querySelector('#a2a-continue').addEventListener('click', function(){
+    var m=missing(); if (m) return notice(m[0], m[1]);
+    document.getElementById('a2a-notice').hidden=true;
     document.querySelector('#a2a-pane1').hidden=true; document.querySelector('#a2a-pane2').hidden=false;
     fetch('/api/a2a/contact',{method:'POST',body:'{}'}).catch(function(){});
     ${kind === "a2a-clarity" ? "" : "mount();"}

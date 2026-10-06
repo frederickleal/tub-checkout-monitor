@@ -25,6 +25,8 @@ const cases = [
   ["a2a challenge",      "/a2a?mode=challenge",      "FAIL", "cloudflare_challenge"],
   ["url redirects away",  "/a2a?mode=redirect",       "FAIL", "redirected"],
   ["cart closed message", "/aieb?mode=closed",        "FAIL", "checkout_error_shown"],
+  ["a2a new required field", "/a2a?mode=newfield",   "PASS", null],
+  ["a2a step 1 refuses",  "/a2a?mode=stuck",          "FAIL", "step2_missing"],
 ];
 
 (async () => {

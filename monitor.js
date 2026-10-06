@@ -150,6 +150,8 @@ async function checkPage(browser, pg) {
       await page.fill("#a2a-first", MONITOR.first);
       await page.fill("#a2a-last", MONITOR.last);
       await page.fill("#a2a-email", MONITOR.email);
+      // Added to the A2A form on 5-6 Oct 2026: buyers must type their email twice.
+      if (await page.locator("#a2a-email-confirm").count()) await page.fill("#a2a-email-confirm", MONITOR.email);
       await page.fill("#a2a-phone", MONITOR.phone);
       if (pg.seats) {
         for (let i = 0; i < pg.seats; i++) await page.click("#a2a-plus");
@@ -159,9 +161,35 @@ async function checkPage(browser, pg) {
       const cont = page.locator("#a2a-continue");
       try { await cont.waitFor({ state: "visible", timeout: 5000 }); await page.waitForFunction(() => !document.querySelector("#a2a-continue").disabled, null, { timeout: 8000 }); }
       catch { throw fail("step1_blocked", "Continue to Payment never became clickable after filling step 1 (quote or validation broken)"); }
-      await cont.click();
-      try { await page.waitForFunction(() => { const p = document.querySelector("#a2a-pane2"); return p && !p.hidden && p.offsetHeight > 0; }, null, { timeout: 8000 }); }
-      catch { throw fail("step2_missing", "Clicked Continue but step 2 (payment pane) never showed"); }
+      // Click Continue. If the form refuses (it shows a red notice under the field it wants), fill that
+      // field the way a buyer would and try again, so a new required field doesn't read as an outage.
+      // The checkout only counts as broken if step 2 still won't open once every field it asks for is filled.
+      const pane2Shown = () => page.waitForFunction(() => { const p = document.querySelector("#a2a-pane2"); return p && !p.hidden && p.offsetHeight > 0; }, null, { timeout: 8000 }).then(() => true, () => false);
+      r.autoFilled = [];
+      let lastAsk = "";
+      for (let attempt = 0; attempt < 4; attempt++) {
+        await cont.click();
+        if (await pane2Shown()) break;
+        const ask = await page.evaluate(() => {
+          const n = document.querySelector("#a2a-notice");
+          const msg = n && !n.hidden ? n.textContent.trim() : "";
+          const f = n && n.previousElementSibling && /^(INPUT|SELECT|TEXTAREA)$/.test(n.previousElementSibling.tagName) ? n.previousElementSibling
+                  : document.activeElement && /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName) ? document.activeElement : null;
+          return { msg, id: f ? f.id : "", type: f ? (f.type || f.tagName.toLowerCase()) : "", empty: f ? !String(f.value || "").trim() : false };
+        }).catch(() => ({ msg: "" }));
+        lastAsk = ask.msg || lastAsk;
+        if (!ask.id || attempt === 3) {
+          throw fail("step2_missing", `Clicked Continue but step 2 (payment pane) never showed${lastAsk ? ` — the form said: "${lastAsk}"` : ""}`);
+        }
+        const sel = "#" + ask.id;
+        const value = /email/i.test(ask.type + ask.id) ? MONITOR.email : /tel|phone/i.test(ask.type + ask.id) ? MONITOR.phone
+                    : /company/i.test(ask.id) ? MONITOR.company : /last/i.test(ask.id) ? MONITOR.last : MONITOR.first;
+        if (ask.type === "checkbox") await page.check(sel).catch(() => {});
+        else if (ask.type === "select-one") await page.selectOption(sel, { index: 1 }).catch(() => {});
+        else await page.fill(sel, value).catch(() => {});
+        r.autoFilled.push(ask.id);
+      }
+      if (r.autoFilled.length) console.log(`  ℹ ${pg.id}: step 1 asked for field(s) the monitor didn't know: ${r.autoFilled.join(", ")} — auto-filled. Add them to monitor.js.`);
       r.timings.step2 = ms(t0);
     }
 
@@ -236,6 +264,7 @@ async function checkPage(browser, pg) {
 
     r.status = r.timings.mount > SLOW_MS ? "WARN" : "PASS";
     r.detail = r.status === "WARN" ? `Payment fields rendered but took ${(r.timings.mount / 1000).toFixed(1)}s (slow)` : `Payment fields rendered in ${(r.timings.mount / 1000).toFixed(1)}s`;
+    if (r.autoFilled && r.autoFilled.length) r.detail += ` (step 1 needed new field: ${r.autoFilled.join(", ")})`;
     return r;
   } catch (e) {
     r.status = "FAIL";
