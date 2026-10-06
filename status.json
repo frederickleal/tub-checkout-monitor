@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-06T08:48:31.445Z",
+  "updatedAt": "2026-10-06T09:09:40.261Z",
   "vantage": "GitHub Actions (cloud runner, US)",
   "intervalMinutes": 15,
-  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/37438402378",
+  "runUrl": "https://github.com/frederickleal/tub-checkout-monitor/actions/runs/37440825222",
   "summary": {
     "total": 5,
     "pass": 0,
@@ -16,14 +16,14 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout",
-      "checkedAt": "2026-10-06T08:47:45.118Z",
+      "checkedAt": "2026-10-06T09:08:53.634Z",
       "status": "FAIL",
       "reason": "step2_missing",
       "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 348,
-        "embed": 492,
-        "total": 8853
+        "nav": 341,
+        "embed": 509,
+        "total": 8930
       },
       "elementsJs": null,
       "blockedRequests": 3,
@@ -40,8 +40,7 @@
         "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
       "failingSince": "2026-10-06T02:27:22.980Z",
-      "lastAlertAt": "2026-10-06T08:48:31.445Z",
-      "remindNow": true
+      "lastAlertAt": "2026-10-06T08:48:31.445Z"
     },
     {
       "id": "a2a-team-seat",
@@ -49,14 +48,14 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724",
-      "checkedAt": "2026-10-06T08:47:45.242Z",
+      "checkedAt": "2026-10-06T09:08:53.789Z",
       "status": "FAIL",
       "reason": "step2_missing",
       "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 388,
-        "embed": 534,
-        "total": 8969
+        "nav": 365,
+        "embed": 556,
+        "total": 9125
       },
       "elementsJs": null,
       "blockedRequests": 3,
@@ -73,8 +72,7 @@
         "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
       "failingSince": "2026-10-06T02:27:23.113Z",
-      "lastAlertAt": "2026-10-06T08:48:31.445Z",
-      "remindNow": true
+      "lastAlertAt": "2026-10-06T08:48:31.445Z"
     },
     {
       "id": "a2a-alumni",
@@ -82,14 +80,14 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/a2a-fall-2026-checkout-185724-496156",
-      "checkedAt": "2026-10-06T08:47:45.118Z",
+      "checkedAt": "2026-10-06T09:08:53.595Z",
       "status": "FAIL",
       "reason": "step2_missing",
       "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 364,
-        "embed": 548,
-        "total": 8853
+        "nav": 353,
+        "embed": 541,
+        "total": 9006
       },
       "elementsJs": null,
       "blockedRequests": 3,
@@ -106,8 +104,7 @@
         "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
       "failingSince": "2026-10-06T02:27:22.981Z",
-      "lastAlertAt": "2026-10-06T08:48:31.445Z",
-      "remindNow": true
+      "lastAlertAt": "2026-10-06T08:48:31.445Z"
     },
     {
       "id": "a2a-10pay",
@@ -115,14 +112,14 @@
       "funnel": "A2A Fall 26",
       "type": "a2a",
       "url": "https://go.theuncommonbusiness.co/10-pay",
-      "checkedAt": "2026-10-06T08:48:22.663Z",
+      "checkedAt": "2026-10-06T09:09:31.436Z",
       "status": "FAIL",
       "reason": "step2_missing",
       "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 252,
-        "embed": 368,
-        "total": 8572
+        "nav": 296,
+        "embed": 501,
+        "total": 8788
       },
       "elementsJs": null,
       "blockedRequests": 3,
@@ -139,8 +136,7 @@
         "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
       "failingSince": "2026-10-06T02:28:01.130Z",
-      "lastAlertAt": "2026-10-06T08:48:31.445Z",
-      "remindNow": true
+      "lastAlertAt": "2026-10-06T08:48:31.445Z"
     },
     {
       "id": "a2a-clarity",
@@ -148,14 +144,14 @@
       "funnel": "A2A Fall 26",
       "type": "a2a-clarity",
       "url": "https://go.theuncommonbusiness.co/clarity-pay",
-      "checkedAt": "2026-10-06T08:48:22.737Z",
+      "checkedAt": "2026-10-06T09:09:31.437Z",
       "status": "FAIL",
       "reason": "step2_missing",
       "detail": "Clicked Continue but step 2 (payment pane) never showed",
       "timings": {
-        "nav": 342,
-        "embed": 459,
-        "total": 8680
+        "nav": 278,
+        "embed": 402,
+        "total": 8735
       },
       "elementsJs": null,
       "blockedRequests": 3,
@@ -172,8 +168,7 @@
         "detail": "Clicked Continue but step 2 (payment pane) never showed"
       },
       "failingSince": "2026-10-06T02:28:01.130Z",
-      "lastAlertAt": "2026-10-06T08:48:31.445Z",
-      "remindNow": true
+      "lastAlertAt": "2026-10-06T08:48:31.445Z"
     }
   ]
 }
