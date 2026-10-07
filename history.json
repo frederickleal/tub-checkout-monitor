@@ -1,239 +1,5 @@
 [
   {
-    "t": "2026-09-30T17:29:42.782Z",
-    "r": [
-      {
-        "id": "aieb-general",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-vip",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-platinum",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-general",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-vip",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-platinum",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-up-vip",
-        "s": "PASS",
-        "m": 2211,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-platinum",
-        "s": "PASS",
-        "m": 2913,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-vip-plat",
-        "s": "PASS",
-        "m": 3711,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-ga-vip",
-        "s": "PASS",
-        "m": 3655,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-ga-platinum",
-        "s": "PASS",
-        "m": 5259,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-founder",
-        "s": "PASS",
-        "m": 2922,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-team-seat",
-        "s": "PASS",
-        "m": 3035,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-alumni",
-        "s": "PASS",
-        "m": 2439,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-10pay",
-        "s": "PASS",
-        "m": 4624,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-clarity",
-        "s": "PASS",
-        "m": 2091,
-        "e": null,
-        "why": null
-      }
-    ]
-  },
-  {
-    "t": "2026-09-30T17:43:41.424Z",
-    "r": [
-      {
-        "id": "aieb-general",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-vip",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-platinum",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-general",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-vip",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-ads-platinum",
-        "s": "FAIL",
-        "m": null,
-        "e": 200,
-        "why": "redirected"
-      },
-      {
-        "id": "aieb-up-vip",
-        "s": "PASS",
-        "m": 3620,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-platinum",
-        "s": "PASS",
-        "m": 3711,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-vip-plat",
-        "s": "PASS",
-        "m": 2987,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-ga-vip",
-        "s": "PASS",
-        "m": 3892,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "aieb-up-ga-platinum",
-        "s": "PASS",
-        "m": 3275,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-founder",
-        "s": "PASS",
-        "m": 3255,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-team-seat",
-        "s": "PASS",
-        "m": 3660,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-alumni",
-        "s": "PASS",
-        "m": 3278,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-10pay",
-        "s": "PASS",
-        "m": 3984,
-        "e": 200,
-        "why": null
-      },
-      {
-        "id": "a2a-clarity",
-        "s": "PASS",
-        "m": 2109,
-        "e": null,
-        "why": null
-      }
-    ]
-  },
-  {
     "t": "2026-09-30T17:56:24.148Z",
     "r": [
       {
@@ -20035,6 +19801,60 @@
         "id": "a2a-clarity",
         "s": "PASS",
         "m": 991,
+        "e": null,
+        "why": null
+      }
+    ]
+  },
+  {
+    "t": "2026-10-07T17:46:49.591Z",
+    "r": [
+      {
+        "id": "a2a-founder",
+        "s": "PASS",
+        "m": 3008,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-3pay",
+        "s": "PASS",
+        "m": 3133,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-5pay",
+        "s": "PASS",
+        "m": 2277,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-team-seat",
+        "s": "PASS",
+        "m": 2574,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-alumni",
+        "s": "PASS",
+        "m": 2791,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-10pay",
+        "s": "PASS",
+        "m": 3162,
+        "e": 200,
+        "why": null
+      },
+      {
+        "id": "a2a-clarity",
+        "s": "PASS",
+        "m": 1483,
         "e": null,
         "why": null
       }
